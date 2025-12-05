@@ -1,0 +1,2073 @@
+_time,host,ground_truth_vector,llm_vector,matched_fields,hamming_accuracy,exact_match,incident_report,prompt_no_taxonomy,_raw,GPT_TC-CAN
+2018-08-20T16:57:27.000+0200,FROTHLY-FW1,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-OT TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-NE AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-DO TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-MO AC:OS-MI AC:PH-UN AC:VE-E-,5,0.29411764705882354,0,"**Incident Report**
+On August 20, 2018, at 14:57:27 UTC+2, a denial-of-service (DoS) attack was detected on the FROTHLY-FW1 firewall. The attack originated from an unknown source and targeted port 514. The incident report suggests that the attacker used social engineering tactics to gain access to the system. The impact of this event is expected to be low, as the DoS attack did not result in significant damage or disruption.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T16:57:27.000+0200
+host: FROTHLY-FW1
+sourcetype: cisco:asa
+source: udp:514
+_raw:
+Aug 20 14:57:27 FROTHLY-FW1 %ASA-4-106023: Deny udp src inside:192.168.9.20/38524 dst outside:192.168.10.106/514 by access-group ""inside_access_in"" [0x0, 0x0]}
+","Aug 20 14:57:27 FROTHLY-FW1 %ASA-4-106023: Deny udp src inside:192.168.9.20/38524 dst outside:192.168.10.106/514 by access-group ""inside_access_in"" [0x0, 0x0]",BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+2018-08-20T16:56:25.000+0200,FROTHLY-FW1,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-NE TT:AV-DO TT:FR-RE TT:BA-OT TT:DE-OT TT:IG-AC TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NE AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-E-,2,0.11764705882352941,0,"**Incident Report:**
+On August 20, 2018, at 14:56:25 UTC+2, a denial-of-service (DoS) attack was detected on the FROTHLY-FW1 firewall. The attack originated from IP address 157.97.121.5 and targeted port 443 on host 192.168.10.18. The attacker used a FIN ACK packet to attempt to establish a connection, which was denied by the firewall. This event is likely an instance of human error (BC:RO-HU) with no significant impact (BC:IM-NO). The attack vector is unknown (TT:AC-CR), and the intent appears to be malicious (TA:AM-ID).","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T16:56:25.000+0200
+host: FROTHLY-FW1
+sourcetype: cisco:asa
+source: udp:514
+_raw:
+Aug 20 14:56:25 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 157.97.121.5/36942 to 192.168.10.18/443 flags FIN ACK  on interface outside}
+",Aug 20 14:56:25 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 157.97.121.5/36942 to 192.168.10.18/443 flags FIN ACK  on interface outside,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+2018-08-20T16:54:40.000+0200,FROTHLY-FW1,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-OT TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-NE AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-NE AC:OS-MI AC:PH-UN AC:VE-E-,7,0.4117647058823529,0,"**Incident Report:**
+On August 20, 2018, at 14:54:40 UTC+2, a denial-of-service (DoS) attack was detected on the FROTHLY-FW1 firewall. The attack originated from IP address 192.168.8.117 and targeted port 443 on host 192.168.9.31. The attacker used a TCP RST packet to exhaust system resources, causing a temporary denial-of-service. The incident was likely caused by human error (BC:RO-HU) and had a low severity impact (BC:SE-LO). The attack vector was active scanning (TT:AC-CR), and the attacker's motivation was unknown (TA:AM-ID). The involved asset was a network device (AC:IN-NE), running Microsoft Windows (AC:OS-MI). There were no physical security concerns (AC:PH-UN) or other vectors involved.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T16:54:40.000+0200
+host: FROTHLY-FW1
+sourcetype: cisco:asa
+source: udp:514
+_raw:
+Aug 20 14:54:40 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 192.168.8.117/53400 to 192.168.9.31/443 flags RST  on interface outside}
+",Aug 20 14:54:40 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 192.168.8.117/53400 to 192.168.9.31/443 flags RST  on interface outside,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+2018-08-20T16:54:35.000+0200,FROTHLY-FW1,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-OT TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-NE AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-NE AC:OS-MI AC:PH-UN AC:VE-E-,7,0.4117647058823529,0,"**Incident Report:**
+On August 20, 2018, at 14:54:35 UTC+2, a denial-of-service (DoS) attack was detected on the FROTHLY-FW1 firewall. The attack originated from IP address 192.168.8.117 and targeted port 443 on host 192.168.9.31. The attacker used a credential scanning technique to identify weak or exposed credentials, which were then exploited to launch the DoS attack. The intent behind this attack appears to be malicious, as it is likely an attempt to disrupt service availability. The impact of this event is expected to be low, as the firewall was able to block the attack and prevent any significant damage.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T16:54:35.000+0200
+host: FROTHLY-FW1
+sourcetype: cisco:asa
+source: udp:514
+_raw:
+Aug 20 14:54:35 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 192.168.8.117/53393 to 192.168.9.31/443 flags ACK  on interface outside}
+",Aug 20 14:54:35 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 192.168.8.117/53393 to 192.168.9.31/443 flags ACK  on interface outside,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+2018-08-20T16:54:00.000+0200,FROTHLY-FW1,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-OT TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-NE AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-DO TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-MO AC:OS-MI AC:PH-UN AC:VE-E-,5,0.29411764705882354,0,"**Incident Report**
+On August 20, 2018, at 14:54:00 UTC+2, a denial-of-service (DoS) attack was detected on the FROTHLY-FW1 firewall. The attack originated from an unknown source and targeted port 514. The incident report suggests that the attacker used social engineering tactics to gain access to the system. The impact of this event is expected to be low, as the DoS attack did not compromise any sensitive data or disrupt critical services.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T16:54:00.000+0200
+host: FROTHLY-FW1
+sourcetype: cisco:asa
+source: udp:514
+_raw:
+Aug 20 14:54:00 FROTHLY-FW1 %ASA-4-106023: Deny udp src inside:192.168.9.20/38524 dst outside:192.168.10.106/514 by access-group ""inside_access_in"" [0x0, 0x0]}
+","Aug 20 14:54:00 FROTHLY-FW1 %ASA-4-106023: Deny udp src inside:192.168.9.20/38524 dst outside:192.168.10.106/514 by access-group ""inside_access_in"" [0x0, 0x0]",BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+2018-08-20T16:51:40.000+0200,FROTHLY-FW1,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-OT TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-NE AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-DO TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-MO AC:OS-MI AC:PH-UN AC:VE-EV,5,0.29411764705882354,0,"**Incident Report**
+On August 20, 2018, at 14:51:40 UTC+2, a denial-of-service (DoS) attack was detected on the FROTHLY-FW1 firewall. The attack originated from an unknown source and targeted port 514. The incident report suggests that the attacker used social engineering tactics to gain access to the system. The impact of this event is expected to be low, as the DoS attack did not result in significant damage or disruption.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T16:51:40.000+0200
+host: FROTHLY-FW1
+sourcetype: cisco:asa
+source: udp:514
+_raw:
+Aug 20 14:51:40 FROTHLY-FW1 %ASA-4-106023: Deny udp src inside:192.168.9.20/38524 dst outside:192.168.10.106/514 by access-group ""inside_access_in"" [0x0, 0x0]}
+","Aug 20 14:51:40 FROTHLY-FW1 %ASA-4-106023: Deny udp src inside:192.168.9.20/38524 dst outside:192.168.10.106/514 by access-group ""inside_access_in"" [0x0, 0x0]",BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+2018-08-20T16:51:13.000+0200,FROTHLY-FW1,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-NE TT:AV-DO TT:FR-RE TT:BA-OT TT:DE-OT TT:IG-AC TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NE AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-E-,2,0.11764705882352941,0,"**Incident Report:**
+On August 20, 2018, at 14:51:13 UTC+2, a denial-of-service (DoS) attack was detected on the FROTHLY-FW1 firewall. The attack originated from IP address 104.238.59.42 and targeted port 443 on host 192.168.10.18. The attacker used a TCP-based DoS attack with ACK flags, attempting to exhaust system resources. This event is likely an attempt by an unknown actor (TA:AM-ID) to disrupt the availability of the target service. The impact is expected to be low (BC:SE-LO), and no sensitive data was compromised (TT:DE-AU).","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T16:51:13.000+0200
+host: FROTHLY-FW1
+sourcetype: cisco:asa
+source: udp:514
+_raw:
+Aug 20 14:51:13 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 104.238.59.42/58934 to 192.168.10.18/443 flags ACK  on interface outside}
+",Aug 20 14:51:13 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 104.238.59.42/58934 to 192.168.10.18/443 flags ACK  on interface outside,BC:IM-NO BC:RO-MA BC:SE-NO TT:AC-NE TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+2018-08-20T16:51:06.000+0200,FROTHLY-FW1,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-OT TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-NE AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-NE AC:OS-MI AC:PH-UN AC:VE-E-,7,0.4117647058823529,0,"**Incident Report:**
+On August 20, 2018, at 14:51:06 UTC+2, a denial-of-service (DoS) attack was detected on the FROTHLY-FW1 firewall. The attack originated from IP address 192.168.8.114 and targeted port 443 on the outside interface. The attacker used a FIN ACK packet to attempt to establish a connection. The incident report indicates that the attack was likely motivated by ideological or political reasons, as it is classified under TA:AM-ID. The impact of this event is expected to be low, with no significant disruption to services or data loss anticipated (BC:SE-LO).","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T16:51:06.000+0200
+host: FROTHLY-FW1
+sourcetype: cisco:asa
+source: udp:514
+_raw:
+Aug 20 14:51:06 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 192.168.8.114/54537 to 192.168.9.20/443 flags FIN ACK  on interface outside}
+",Aug 20 14:51:06 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 192.168.8.114/54537 to 192.168.9.20/443 flags FIN ACK  on interface outside,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+2018-08-20T16:54:17.000+0200,mars.i-08e52f8b5a034012d,BC:IM-AC BC:RO-MA BC:SE-HI TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-AI TT:DE-AU TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-UN AC:OS-GN AC:PH-OT AC:VE-VA,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-E-,3,0.17647058823529413,0,"**Incident Report**
+On August 20, 2018, at 14:54:17 UTC+2, an invalid user ""test"" attempted to connect from IP address 167.114.13.150 and port 60276 to the Mars Linux server (host: mars.i-08e52f8b5a034012d). The attempt was likely a reconnaissance or scanning activity, as there is no evidence of successful authentication or data exfiltration. The impact is expected to be low, with no significant disruption to services. The incident report suggests that the attacker's intent may have been to gather information about the target system, possibly for future exploitation.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T16:54:17.000+0200
+host: mars.i-08e52f8b5a034012d
+sourcetype: linux_secure
+source: /var/log/secure
+_raw:
+Aug 20 14:54:17 ip-172-31-12-76 sshd[22357]: Invalid user test from 167.114.13.150 port 60276}
+",Aug 20 14:54:17 ip-172-31-12-76 sshd[22357]: Invalid user test from 167.114.13.150 port 60276,BC:IM-NO BC:RO-MA BC:SE-LO TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-AU AC:OS-LI AC:PH-OT AC:VE-OT
+2018-08-20T16:54:16.000+0200,mars.i-08e52f8b5a034012d,BC:IM-AC BC:RO-MA BC:SE-HI TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-AI TT:DE-AU TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-PR AC:OS-GN AC:PH-OT AC:VE-VA,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-E-,3,0.17647058823529413,0,"**Incident Report:**
+On August 20, 2018, at 14:54:16 UTC+2, an invalid user ""admin"" attempted to connect from IP address 167.114.13.150 and port 57198 to the Mars Linux server (host: mars.i-08e52f8b5a034012d). The attempt was likely a brute-force attack, as the user is not recognized by the system. The impact of this event is expected to be low, with no significant consequences observed. The root cause is attributed to human error, as an unauthorized user attempted to access the system.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T16:54:16.000+0200
+host: mars.i-08e52f8b5a034012d
+sourcetype: linux_secure
+source: /var/log/secure
+_raw:
+Aug 20 14:54:16 ip-172-31-12-76 sshd[22353]: Invalid user admin from 167.114.13.150 port 57198}
+",Aug 20 14:54:16 ip-172-31-12-76 sshd[22353]: Invalid user admin from 167.114.13.150 port 57198,BC:IM-NO BC:RO-MA BC:SE-LO TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-AU AC:OS-LI AC:PH-OT AC:VE-OT
+2018-08-20T17:03:55.000+0200,FROTHLY-FW1,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-OT TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-NE AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-E-,6,0.35294117647058826,0,"**Incident Report:**
+On August 20, 2018, at 15:03:55 UTC+2, a denial-of-service (DoS) attack was detected on the FROTHLY-FW1 firewall. The attack originated from IP address 192.168.8.117 and targeted port 443 on host 192.168.9.31. The attacker used a TCP RST packet to exhaust system resources, causing a temporary denial-of-service. This event is likely an attempt by an unauthorized user to disrupt the normal functioning of the target system.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T17:03:55.000+0200
+host: FROTHLY-FW1
+sourcetype: cisco:asa
+source: udp:514
+_raw:
+Aug 20 15:03:55 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 192.168.8.117/53415 to 192.168.9.31/443 flags RST  on interface outside}
+",Aug 20 15:03:55 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 192.168.8.117/53415 to 192.168.9.31/443 flags RST  on interface outside,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+2018-08-20T17:03:02.000+0200,FROTHLY-FW1,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-OT TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-NE AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-DO TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-MO AC:OS-MI AC:PH-UN AC:VE-EV,5,0.29411764705882354,0,"**Incident Report**
+On August 20, 2018, at 15:03:02 UTC+2, a denial-of-service (DoS) attack was detected on the FROTHLY-FW1 firewall. The attack originated from an unknown source and targeted port 514. The incident report suggests that the attacker used social engineering tactics to gain access to the system. The impact of this event is expected to be low, as the DoS attack did not result in significant damage or disruption.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T17:03:02.000+0200
+host: FROTHLY-FW1
+sourcetype: cisco:asa
+source: udp:514
+_raw:
+Aug 20 15:03:02 FROTHLY-FW1 %ASA-4-106023: Deny udp src inside:192.168.9.20/38524 dst outside:192.168.10.106/514 by access-group ""inside_access_in"" [0x0, 0x0]}
+","Aug 20 15:03:02 FROTHLY-FW1 %ASA-4-106023: Deny udp src inside:192.168.9.20/38524 dst outside:192.168.10.106/514 by access-group ""inside_access_in"" [0x0, 0x0]",BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+2018-08-20T16:59:52.000+0200,FROTHLY-FW1,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-NE TT:AV-DO TT:FR-RE TT:BA-OT TT:DE-OT TT:IG-AC TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SE AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-BT TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-EV,2,0.11764705882352941,0,"**Incident Report**
+On August 20, 2018, at 14:59:52 UTC+2, a denial-of-service (DoS) attack was detected on the FROTHLY-FW1 firewall. The attack originated from an unknown IP address (75.75.75.75) and targeted port 13026 on host 192.168.10.18. The attacker attempted to send DNS responses to this port, which were denied by the firewall due to a configured security policy. This event is likely a reconnaissance activity, possibly part of a larger attack campaign. The impact is expected to be low, as the attack was successfully blocked by the firewall.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T16:59:52.000+0200
+host: FROTHLY-FW1
+sourcetype: cisco:asa
+source: udp:514
+_raw:
+Aug 20 14:59:52 FROTHLY-FW1 %ASA-2-106007: Deny inbound UDP from 75.75.75.75/53 to 192.168.10.18/13026 due to DNS Response}
+",Aug 20 14:59:52 FROTHLY-FW1 %ASA-2-106007: Deny inbound UDP from 75.75.75.75/53 to 192.168.10.18/13026 due to DNS Response,BC:IM-NO BC:RO-MA BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NW AC:OS-MI AC:PH-OT AC:VE-OT
+2018-08-20T17:08:12.000+0200,gacrux.i-0920036c8ca91e501,BC:IM-AC BC:RO-MA BC:SE-HI TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-AI TT:DE-AU TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-UN AC:OS-GN AC:PH-OT AC:VE-VA,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-E-,3,0.17647058823529413,0,"**Incident Report:**
+On August 20, 2018, at 15:08:12 UTC+2, an invalid user ""default"" attempted to connect to the SSH service on host ""gacrux.i-0920036c8ca91e501"" from IP address 5.101.40.81 and port 43926. The attempt was likely a brute-force attack, as it is not a valid user account. The impact of this event is expected to be low, as the attacker did not gain access to the system. The root cause is human error, as an unauthorized user attempted to connect to the SSH service.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T17:08:12.000+0200
+host: gacrux.i-0920036c8ca91e501
+sourcetype: linux_secure
+source: /var/log/secure
+_raw:
+Aug 20 15:08:12 ip-172-16-0-178 sshd[16365]: Invalid user default from 5.101.40.81 port 43926}
+",Aug 20 15:08:12 ip-172-16-0-178 sshd[16365]: Invalid user default from 5.101.40.81 port 43926,BC:IM-NO BC:RO-MA BC:SE-LO TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-AU AC:OS-LI AC:PH-OT AC:VE-OT
+2018-08-20T17:07:56.000+0200,FROTHLY-FW1,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-OT TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-NE AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-E-,6,0.35294117647058826,0,"**Incident Report:**
+On August 20, 2018, at 15:07:56 UTC+2, a denial-of-service (DoS) attack was detected on the FROTHLY-FW1 firewall. The attack originated from IP address 192.168.8.117 and targeted port 443 on host 192.168.9.31. The attacker used FIN, PSH, and ACK flags to attempt a connection. This event is classified as a human error (BC:RO-HU) with low severity (BC:SE-LO). The attack vector was active scanning (TT:AC-CR), and the goal was likely to disrupt service or gather information (TA:AM-ID). The involved asset was a personal email account (AC:IN-PE), running on Microsoft Windows (AC:OS-MI) with no physical security concerns (AC:PH-UN).","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T17:07:56.000+0200
+host: FROTHLY-FW1
+sourcetype: cisco:asa
+source: udp:514
+_raw:
+Aug 20 15:07:56 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 192.168.8.117/53422 to 192.168.9.31/443 flags FIN PSH ACK  on interface outside}
+",Aug 20 15:07:56 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 192.168.8.117/53422 to 192.168.9.31/443 flags FIN PSH ACK  on interface outside,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+2018-08-20T17:04:49.282+0200,PCERF-L,BC:IM-NO BC:RO-HU BC:SE-ME TT:AC-OT TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-PD TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-WA AC:OS-OT AC:PH-UN AC:VE-AB,BC:IM-NO BC:RO-HU BC:SE-ME TT:AC-CR TT:AV-DO TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-SA AC:VE-E-,5,0.29411764705882354,0,"**Incident Report:**
+On August 20, 2018, at 15:04:49 UTC, a potential security incident was detected on the PCERF-L host. The event appears to be a single-source denial-of-service (DoS) attack targeting the schuetze-consult.de website. The attacker's goal is likely ideological or political in nature. The involved asset is a personal email account, and the operating system is Microsoft Windows. Physical security measures were not compromised. The vector of the attack was via email phishing.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T17:04:49.282+0200
+host: PCERF-L
+sourcetype: stream:http
+source: stream:Splunk_HTTPURI
+_raw:
+{""endtime"":""2018-08-20T15:04:49.282399Z"",""timestamp"":""2018-08-20T15:04:49.282399Z"",""count"":3,""dest_ip"":""185.21.102.201"",""site"":""schuetze-consult.de"",""status"":404,""uri_path"":""/admin/images/flags/GB.gif"",""sum(bytes_in)"":1506,""sum(bytes_out)"":5379,""sum(time_taken)"":710379\}}
+","{""endtime"":""2018-08-20T15:04:49.282399Z"",""timestamp"":""2018-08-20T15:04:49.282399Z"",""count"":3,""dest_ip"":""185.21.102.201"",""site"":""schuetze-consult.de"",""status"":404,""uri_path"":""/admin/images/flags/GB.gif"",""sum(bytes_in)"":1506,""sum(bytes_out)"":5379,""sum(time_taken)"":710379}",BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NW AC:OS-WA AC:PH-OT AC:VE-OT
+2018-08-20T17:04:39.000+0200,mars.i-08e52f8b5a034012d,BC:IM-AC BC:RO-MA BC:SE-HI TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-AI TT:DE-AU TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-UN AC:OS-GN AC:PH-OT AC:VE-VA,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-E-,3,0.17647058823529413,0,"**Incident Report**
+On August 20, 2018, at 15:04:39 UTC+2, an invalid user ""test"" attempted to connect from IP address 50.115.191.161 and port 32806 to the Mars Linux server (host: mars.i-08e52f8b5a034012d). The attempt was likely a reconnaissance or scanning activity, as there is no evidence of successful authentication or data exfiltration. The impact is expected to be low, with no significant disruption to services. The incident report suggests that the attacker's intent may have been to gather information about the target system, possibly for future exploitation.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T17:04:39.000+0200
+host: mars.i-08e52f8b5a034012d
+sourcetype: linux_secure
+source: /var/log/secure
+_raw:
+Aug 20 15:04:39 ip-172-31-12-76 sshd[25914]: Invalid user test from 50.115.191.161 port 32806}
+",Aug 20 15:04:39 ip-172-31-12-76 sshd[25914]: Invalid user test from 50.115.191.161 port 32806,BC:IM-NO BC:RO-MA BC:SE-LO TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-AU AC:OS-LI AC:PH-OT AC:VE-OT
+2018-08-20T17:00:59.333+0200,PCERF-L,BC:IM-NO BC:RO-HU BC:SE-ME TT:AC-OT TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-WA AC:OS-OT AC:PH-UN AC:VE-AB,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-BA TT:VU-N TA:AM-ID AC:IN-WA AC:OS-MI AC:PH-SA AC:VE-EV,6,0.35294117647058826,0,"**Incident Report**
+On August 20, 2018, at 15:00:59.133727Z, a GET request was made to the URL ""/admin/images/flags/GB.gif"" from IP address ""172.16.197.137"" and MAC address ""00:0C:29:5A:44:8A"". The request was made using the HTTP method ""GET"" with a referrer of ""http://schuetze-consult.de/willkommen.php"". The server responded with a 404 Not Found status code.
+The incident appears to be a benign access attempt, likely due to a user attempting to access an image file. The involved asset is a workstation (AC:IN-WA) running Microsoft Windows (AC:OS-MI). There is no indication of physical security breaches (AC:PH-SA).
+Please note that this analysis is based solely on the provided logs and may not reflect the actual incident's severity or impact.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T17:00:59.333+0200
+host: PCERF-L
+sourcetype: stream:http
+source: stream:http
+_raw:
+{""endtime"":""2018-08-20T15:00:59.333569Z"",""timestamp"":""2018-08-20T15:00:59.133727Z"",""bytes"":2325,""src_mac"":""00:0C:29:5A:44:8A"",""src_port"":50923,""bytes_in"":540,""dest_ip"":""185.21.102.201"",""dest_mac"":""00:50:56:FF:7D:5C"",""dest_port"":80,""bytes_out"":1785,""time_taken"":200362,""transport"":""tcp"",""flow_id"":""71c25ad2-ccd1-4304-ac0b-fa513f307640"",""src_ip"":""172.16.197.137"",""http_comment"":""HTTP/1.1 404 Not Found"",""http_content_length"":1502,""http_content_type"":""text/html"",""cookie"":""PHPSESSID=4af642992a8ea5a8215c5f8063f1e985; _pk_id.1.c404=cbc04f5a0f82bd31.1534777483.1.1532561504.1534777483.; _pk_ses.1.c404=*"",""site"":""schuetze-consult.de"",""http_method"":""GET"",""http_referrer"":""http://schuetze-consult.de/willkommen.php"",""server"":""Apache/2.4.29"",""status"":404,""uri_path"":""/admin/images/flags/GB.gif"",""http_user_agent"":""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134"",""protocol_stack"":""ip:tcp:http""\}}
+","{""endtime"":""2018-08-20T15:00:59.333569Z"",""timestamp"":""2018-08-20T15:00:59.133727Z"",""bytes"":2325,""src_mac"":""00:0C:29:5A:44:8A"",""src_port"":50923,""bytes_in"":540,""dest_ip"":""185.21.102.201"",""dest_mac"":""00:50:56:FF:7D:5C"",""dest_port"":80,""bytes_out"":1785,""time_taken"":200362,""transport"":""tcp"",""flow_id"":""71c25ad2-ccd1-4304-ac0b-fa513f307640"",""src_ip"":""172.16.197.137"",""http_comment"":""HTTP/1.1 404 Not Found"",""http_content_length"":1502,""http_content_type"":""text/html"",""cookie"":""PHPSESSID=4af642992a8ea5a8215c5f8063f1e985; _pk_id.1.c404=cbc04f5a0f82bd31.1534777483.1.1532561504.1534777483.; _pk_ses.1.c404=*"",""site"":""schuetze-consult.de"",""http_method"":""GET"",""http_referrer"":""http://schuetze-consult.de/willkommen.php"",""server"":""Apache/2.4.29"",""status"":404,""uri_path"":""/admin/images/flags/GB.gif"",""http_user_agent"":""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/17.17134"",""protocol_stack"":""ip:tcp:http""}",BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NW AC:OS-WA AC:PH-OT AC:VE-OT
+2018-08-20T16:34:49.000+0200,gacrux.i-06fea586f3d3c8ce8,BC:IM-NO BC:RO-HU BC:SE-ME TT:AC-OT TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-WA AC:OS-OT AC:PH-UN AC:VE-AB,BC:IM-NO BC:RO-HU BC:SE-ME TT:AC-CR TT:AV-DO TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-SA AC:VE-E-,5,0.29411764705882354,0,"**Incident Report:**
+On August 20, 2018, at 14:18:15 UTC, an HTTP stream event was detected on host gacrux.i-06fea586f3d3c8ce8. The event involved a login attempt to the /login.cgi URI with a status code of 400 (Bad Request). The attacker used social engineering tactics to target the user's personal email account. The incident is likely to have a medium impact, as it may compromise the user's authentication credentials.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T16:34:49.000+0200
+host: gacrux.i-06fea586f3d3c8ce8
+sourcetype: stream:http
+source: stream:Splunk_HTTPURI
+_raw:
+{""endtime"":""2018-08-20T14:18:15.081627Z"",""timestamp"":""2018-08-20T14:18:15.081627Z"",""count"":1,""dest_ip"":""172.16.0.127"",""site"":"""",""status"":400,""uri_path"":""/login.cgi"",""sum(bytes_in)"":218,""sum(bytes_out)"":483,""sum(time_taken)"":230120\}}
+","{""endtime"":""2018-08-20T14:18:15.081627Z"",""timestamp"":""2018-08-20T14:18:15.081627Z"",""count"":1,""dest_ip"":""172.16.0.127"",""site"":"""",""status"":400,""uri_path"":""/login.cgi"",""sum(bytes_in)"":218,""sum(bytes_out)"":483,""sum(time_taken)"":230120}",BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NW AC:OS-WA AC:PH-OT AC:VE-OT
+2018-08-20T16:41:49.119+0200,ip-172-16-0-109.ec2.internal,BC:IM-NO BC:RO-HU BC:SE-ME TT:AC-OT TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-WA AC:OS-OT AC:PH-UN AC:VE-AB,BC:IM-DE BC:RO-HU BC:SE-ME TT:AC-CR TT:AV-DO TT:FR-BR TT:BA-AI TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-WA AC:OS-MI AC:PH-SA AC:VE-EV,3,0.17647058823529413,0,"**Incident Report:**
+On August 20, 2018, at 14:41:49 UTC, an HTTP POST request was made to the Apache server on IP address 34.227.100.38:80 from IP address 61.75.35.114. The request was a PHP-based command injection attempt using the ""cmd=die(md5('PHP'))"" form data. The attacker's intent is likely to execute malicious code or gather sensitive information. The impact of this incident is medium, as it could potentially lead to unauthorized access or data breaches.
+Please note that this report is based solely on the provided logs and may not reflect the actual severity or consequences of the incident.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T16:41:49.119+0200
+host: ip-172-16-0-109.ec2.internal
+sourcetype: stream:http
+source: stream:http
+_raw:
+{""endtime"":""2018-08-20T14:41:49.120227Z"",""timestamp"":""2018-08-20T14:41:49.119725Z"",""bytes"":647,""src_mac"":""0E:95:54:6E:50:FA"",""src_port"":29282,""bytes_in"":183,""dest_ip"":""172.16.0.109"",""dest_mac"":""0E:C3:B7:4F:52:0E"",""dest_port"":80,""bytes_out"":464,""time_taken"":203158,""transport"":""tcp"",""flow_id"":""84febb24-1504-41bf-80d4-32150d235845"",""src_ip"":""61.75.35.114"",""http_comment"":""HTTP/1.1 404 Not Found"",""http_content_length"":284,""http_content_type"":""text/html; charset=iso-8859-1"",""form_data"":""cmd=die(md5('PHP'));"",""site"":""34.227.100.38:80"",""http_method"":""POST"",""server"":""Apache/2.2.34 (Amazon)"",""status"":404,""uri_path"":""/cmd.php"",""http_user_agent"":""Mozilla/5.0"",""protocol_stack"":""ip:tcp:http""\}}
+","{""endtime"":""2018-08-20T14:41:49.120227Z"",""timestamp"":""2018-08-20T14:41:49.119725Z"",""bytes"":647,""src_mac"":""0E:95:54:6E:50:FA"",""src_port"":29282,""bytes_in"":183,""dest_ip"":""172.16.0.109"",""dest_mac"":""0E:C3:B7:4F:52:0E"",""dest_port"":80,""bytes_out"":464,""time_taken"":203158,""transport"":""tcp"",""flow_id"":""84febb24-1504-41bf-80d4-32150d235845"",""src_ip"":""61.75.35.114"",""http_comment"":""HTTP/1.1 404 Not Found"",""http_content_length"":284,""http_content_type"":""text/html; charset=iso-8859-1"",""form_data"":""cmd=die(md5('PHP'));"",""site"":""34.227.100.38:80"",""http_method"":""POST"",""server"":""Apache/2.2.34 (Amazon)"",""status"":404,""uri_path"":""/cmd.php"",""http_user_agent"":""Mozilla/5.0"",""protocol_stack"":""ip:tcp:http""}",BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-EX TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SW TA:AM-OT AC:IN-WA AC:OS-WA AC:PH-OT AC:VE-OT
+2018-08-20T15:08:36.000+0200,mars.i-08e52f8b5a034012d,BC:IM-AC BC:RO-MA BC:SE-HI TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-AI TT:DE-AU TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-UN AC:OS-GN AC:PH-OT AC:VE-VA,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-E-,3,0.17647058823529413,0,"**Incident Report**
+On August 20, 2018, at 13:08:36 UTC+2, an invalid user attempt was detected on the Mars Linux system (host: mars.i-08e52f8b5a034012d). The attacker used a remote IP address (115.68.216.81) and port 55758 to connect to the SSH service. This event is likely a reconnaissance activity, possibly motivated by ideological or political reasons. The impact of this incident is expected to be low, as no unauthorized access was gained.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T15:08:36.000+0200
+host: mars.i-08e52f8b5a034012d
+sourcetype: linux_secure
+source: /var/log/secure
+_raw:
+Aug 20 13:08:36 ip-172-31-12-76 sshd[9835]: Invalid user anita from 115.68.216.81 port 55758}
+",Aug 20 13:08:36 ip-172-31-12-76 sshd[9835]: Invalid user anita from 115.68.216.81 port 55758,BC:IM-NO BC:RO-MA BC:SE-LO TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-AU AC:OS-LI AC:PH-OT AC:VE-OT
+2018-08-20T15:59:35.000+0200,mars.i-08e52f8b5a034012d,BC:IM-AC BC:RO-MA BC:SE-HI TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-AI TT:DE-AU TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-UN AC:OS-GN AC:PH-OT AC:VE-VA,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-E-,3,0.17647058823529413,0,"**Incident Report**
+On August 20, 2018, at 15:59:35 UTC+2, an invalid user attempt was detected on the Mars Linux system (host: mars.i-08e52f8b5a034012d). The attacker attempted to access the system using the username ""sales1"" from IP address 4.16.205.42 and port 54600. This event is classified as a human error (BC:RO-HU) with low severity (BC:SE-LO). The attack vector was likely social engineering (TT:SO-PH), and the attacker's motivation was unknown (TA:AM-ID). The involved asset was a personal email account (AC:IN-PE), and the operating system was Microsoft Windows (AC:OS-MI). There is no physical security concern (AC:PH-UN) or vector other than email (AC:VE-E-).","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T15:59:35.000+0200
+host: mars.i-08e52f8b5a034012d
+sourcetype: linux_secure
+source: /var/log/secure
+_raw:
+Aug 20 13:59:35 ip-172-31-12-76 sshd[27012]: Invalid user sales1 from 4.16.205.42 port 54600}
+",Aug 20 13:59:35 ip-172-31-12-76 sshd[27012]: Invalid user sales1 from 4.16.205.42 port 54600,BC:IM-NO BC:RO-MA BC:SE-LO TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-AU AC:OS-LI AC:PH-OT AC:VE-OT
+2018-08-20T16:04:02.640+0200,serverless,BC:IM-OT BC:RO-MA BC:SE-ME TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-PD TT:IG-SN TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SE AC:OS-OT AC:PH-UN AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT,9,0.5294117647058824,0,"**Incident Report:**
+The incident report is as follows:
+On August 20, 2018, at approximately 14:03:00 UTC, a GuardDuty finding was triggered on an EC2 instance (i-0cc93bade2b3cba63) in the us-west-1 region. The finding indicates that an unprotected port (22/SSH) on the instance is being probed by a known malicious host (122.112.243.11). This activity is likely reconnaissance and may be indicative of a potential attack.
+The involved assets include the EC2 instance, the GuardDuty service, and the malicious IP address. The indicators are the port probe activity and the presence of the malicious host. The intent appears to be reconnaissance or probing for vulnerabilities. The likely impact is increased risk of unauthorized access or data exfiltration if the attacker gains further access.
+Please note that this report is based solely on the provided logs and may not reflect the actual incident details or severity.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T16:04:02.640+0200
+        host: serverless
+        sourcetype: aws:cloudwatch:guardduty
+        source: lambda:guardduty:us-west-1
+aws.guardduty
+        _raw:
+        {""version"":""0"",""id"":""70799bdd-f11d-d279-6b46-79193f7705bd"",""detail-type"":""GuardDuty Finding"",""source"":""aws.guardduty"",""account"":""622676721278"",""time"":""2018-08-20Y14:03:00Z"",""region"":""us-west-1"",""resources"":[],""detail"":{""schemaVersion"":""2.0"",""accountId"":""622676721278"",""region"":""us-west-1"",""partition"":""aws"",""id"":""c4b26a12f032d1540b79968e14a7ac94"",""arn"":""arn:aws:guardduty:us-west-1:622676721278:detector/eeb2575ca3a1de4f7be135596989e932/finding/c4b26a12f032d1540b79968e14a7ac94"",""type"":""Recon:EC2/PortProbeUnprotectedPort"",""resource"":{""resourceType"":""Instance"",""instanceDetails"":{""instanceId"":""i-0cc93bade2b3cba63"",""instanceType"":""t2.medium"",""launchTime"":""2018-08-20Y13:32:59Z"",""platform"":null,""productCodes"":[],""iamInstanceProfile"":{""arn"":""arn:aws:iam::622676721278:instance-profile/EC2InstanceRole"",""id"":""AIPAIS34HCZIIDYAG7AWC""\},""networkInterfaces"":[{""ipv6Addresses"":[],""networkInterfaceId"":""eni-09d70e07677fc312f"",""privateDnsName"":""ip-172-16-0-145.us-west-1.compute.internal"",""privateIpAddress"":""172.16.0.145"",""privateIpAddresses"":[{""privateDnsName"":""ip-172-16-0-145.us-west-1.compute.internal"",""privateIpAddress"":""172.16.0.145""\}],""subnetId"":""subnet-018fc9fb2611f7320"",""vpcId"":""vpc-05cb3dfad78e47394"",""securityGroups"":[{""groupName"":""production-FrothlyWebPubSecGroup-1UC6YLQVH5KJO"",""groupId"":""sg-0849cdeb5ef571996""\}],""publicDnsName"":""ec2-54-183-247-244.us-west-1.compute.amazonaws.com"",""publicIp"":""54.183.247.244""\}],""tags"":[{""key"":""aws:autoscaling:groupName"",""value"":""WebServers""\}],""instanceState"":""running"",""availabilityZone"":""us-west-1a"",""imageId"":""ami-0e86606d"",""imageDescription"":""Amazon Linux AMI 2018.03.0.20180622 x86_64 HVM GP2""\}\},""service"":{""serviceName"":""guardduty"",""detectorId"":""eeb2575ca3a1de4f7be135596989e932"",""action"":{""actionType"":""PORT_PROBE"",""portProbeAction"":{""portProbeDetails"":[{""localPortDetails"":{""port"":22,""portName"":""SSH""\},""remoteIpDetails"":{""ipAddressV4"":""122.112.243.11"",""organization"":{""asn"":""4812"",""asnOrg"":""China Telecom (Group)"",""isp"":""CNISP-Union Technology (Beijing) Co."",""org"":""China Telecom Shanghai""\},""country"":{""countryName"":""China""\},""city"":{""cityName"":""Beijing""\},""geoLocation"":{""lat"":39.9288,""lon"":116.3889\}\}\}],""blocked"":false\}\},""resourceRole"":""TARGET"",""additionalInfo"":{""threatName"":""Scanner"",""threatListName"":""ProofPoint""\},""eventFirstSeen"":""2018-08-20Y13:50:05Z"",""eventLastSeen"":""2018-08-20Y13:51:04Z"",""archived"":false,""count"":1\},""severity"":2,""createdAt"":""2018-08-20Y14:01:29.445Z"",""updatedAt"":""2018-08-20Y14:01:29.445Z"",""title"":""Unprotected port on EC2 instance i-0cc93bade2b3cba63 is being probed."",""description"":""EC2 instance has an unprotected port which is being probed by a known malicious host.""\}\}}
+","{""version"":""0"",""id"":""70799bdd-f11d-d279-6b46-79193f7705bd"",""detail-type"":""GuardDuty Finding"",""source"":""aws.guardduty"",""account"":""622676721278"",""time"":""2018-08-20Y14:03:00Z"",""region"":""us-west-1"",""resources"":[],""detail"":{""schemaVersion"":""2.0"",""accountId"":""622676721278"",""region"":""us-west-1"",""partition"":""aws"",""id"":""c4b26a12f032d1540b79968e14a7ac94"",""arn"":""arn:aws:guardduty:us-west-1:622676721278:detector/eeb2575ca3a1de4f7be135596989e932/finding/c4b26a12f032d1540b79968e14a7ac94"",""type"":""Recon:EC2/PortProbeUnprotectedPort"",""resource"":{""resourceType"":""Instance"",""instanceDetails"":{""instanceId"":""i-0cc93bade2b3cba63"",""instanceType"":""t2.medium"",""launchTime"":""2018-08-20Y13:32:59Z"",""platform"":null,""productCodes"":[],""iamInstanceProfile"":{""arn"":""arn:aws:iam::622676721278:instance-profile/EC2InstanceRole"",""id"":""AIPAIS34HCZIIDYAG7AWC""},""networkInterfaces"":[{""ipv6Addresses"":[],""networkInterfaceId"":""eni-09d70e07677fc312f"",""privateDnsName"":""ip-172-16-0-145.us-west-1.compute.internal"",""privateIpAddress"":""172.16.0.145"",""privateIpAddresses"":[{""privateDnsName"":""ip-172-16-0-145.us-west-1.compute.internal"",""privateIpAddress"":""172.16.0.145""}],""subnetId"":""subnet-018fc9fb2611f7320"",""vpcId"":""vpc-05cb3dfad78e47394"",""securityGroups"":[{""groupName"":""production-FrothlyWebPubSecGroup-1UC6YLQVH5KJO"",""groupId"":""sg-0849cdeb5ef571996""}],""publicDnsName"":""ec2-54-183-247-244.us-west-1.compute.amazonaws.com"",""publicIp"":""54.183.247.244""}],""tags"":[{""key"":""aws:autoscaling:groupName"",""value"":""WebServers""}],""instanceState"":""running"",""availabilityZone"":""us-west-1a"",""imageId"":""ami-0e86606d"",""imageDescription"":""Amazon Linux AMI 2018.03.0.20180622 x86_64 HVM GP2""}},""service"":{""serviceName"":""guardduty"",""detectorId"":""eeb2575ca3a1de4f7be135596989e932"",""action"":{""actionType"":""PORT_PROBE"",""portProbeAction"":{""portProbeDetails"":[{""localPortDetails"":{""port"":22,""portName"":""SSH""},""remoteIpDetails"":{""ipAddressV4"":""122.112.243.11"",""organization"":{""asn"":""4812"",""asnOrg"":""China Telecom (Group)"",""isp"":""CNISP-Union Technology (Beijing) Co."",""org"":""China Telecom Shanghai""},""country"":{""countryName"":""China""},""city"":{""cityName"":""Beijing""},""geoLocation"":{""lat"":39.9288,""lon"":116.3889}}}],""blocked"":false}},""resourceRole"":""TARGET"",""additionalInfo"":{""threatName"":""Scanner"",""threatListName"":""ProofPoint""},""eventFirstSeen"":""2018-08-20Y13:50:05Z"",""eventLastSeen"":""2018-08-20Y13:51:04Z"",""archived"":false,""count"":1},""severity"":2,""createdAt"":""2018-08-20Y14:01:29.445Z"",""updatedAt"":""2018-08-20Y14:01:29.445Z"",""title"":""Unprotected port on EC2 instance i-0cc93bade2b3cba63 is being probed."",""description"":""EC2 instance has an unprotected port which is being probed by a known malicious host.""}}",BC:IM-NO BC:RO-MA BC:SE-LO TT:AC-SC TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NW AC:OS-NW AC:PH-OT AC:VE-OT
+2018-08-20T12:53:24.000+0200,mars.i-08e52f8b5a034012d,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-PR AC:OS-GN AC:PH-UN AC:VE-VA,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-E-,5,0.29411764705882354,0,"**Incident Report:**
+On August 20, 2018, at 10:53:24 UTC+2, an invalid user ""cron"" from IP address 5.101.40.81 attempted to connect to the SSH service on host ""mars.i-08e52f8b5a034012d"". The attempt was made from port 47115. This event is classified as a human error (BC:RO-HU) with low severity (BC:SE-LO). The attacker used active scanning (TT:AC-CR) and social engineering (TT:SO-PH) to gain access. The incident report suggests that the attack was likely motivated by ideology or influence and disinformation (TA:AM-ID). The involved asset is a personal email account (AC:IN-PE), running on a Microsoft Windows operating system (AC:OS-MI). There were no physical security concerns (AC:PH-UN) or other vectors involved.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T12:53:24.000+0200
+host: mars.i-08e52f8b5a034012d
+sourcetype: linux_secure
+source: /var/log/secure
+_raw:
+Aug 20 10:53:24 ip-172-31-12-76 sshd[20900]: Invalid user cron from 5.101.40.81 port 47115}
+",Aug 20 10:53:24 ip-172-31-12-76 sshd[20900]: Invalid user cron from 5.101.40.81 port 47115,BC:IM-NO BC:RO-MA BC:SE-LO TT:AC-AT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-ID AC:IN-AU AC:OS-AU AC:PH-OT AC:VE-OT
+2018-08-20T12:55:58.000+0200,FROTHLY-FW1,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-OT TT:AV-MI TT:FR-RE TT:BA-OT TT:DE-OT TT:IG-AC TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-NE AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-E-,5,0.29411764705882354,0,"**Incident Report:**
+On August 20, 2018, at 10:55:58 UTC+2, a denial-of-service (DoS) attack was detected on the FROTHLY-FW1 firewall. The attack originated from an unknown IP address (192.168.9.30) and targeted port 8088 on the outside interface of the ASA device. The attacker used a TCP RST packet to attempt to exhaust system resources. Although the impact is considered low, the event highlights the importance of monitoring and filtering incoming traffic to prevent such attacks.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T12:55:58.000+0200
+host: FROTHLY-FW1
+sourcetype: cisco:asa
+source: udp:514
+_raw:
+Aug 20 10:55:58 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 192.168.9.30/40496 to 34.215.24.225/8088 flags RST  on interface inside}
+",Aug 20 10:55:58 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 192.168.9.30/40496 to 34.215.24.225/8088 flags RST  on interface inside,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-NW TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NW AC:OS-NW AC:PH-OT AC:VE-OT
+2018-08-20T13:11:03.000+0200,FROTHLY-FW1,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-OT TT:AV-MI TT:FR-RE TT:BA-OT TT:DE-OT TT:IG-AC TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-NE AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-E-,5,0.29411764705882354,0,"**Incident Report:**
+On August 20, 2018, at 11:11:03 AM CEST, a denial-of-service (DoS) attack was detected on the FROTHLY-FW1 firewall. The attack originated from IP address 192.168.8.112 and targeted port 80 on host 192.168.9.30. The attacker used a credential scanning technique to identify weak or exposed credentials, which were then exploited to launch the DoS attack. The incident report suggests that the attack was likely motivated by an ideological goal (TA:AM-ID) and may have been carried out by an insider (AC:IN-PE). The impact of this event is expected to be low (BC:SE-LO), as no significant damage or disruption has occurred.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T13:11:03.000+0200
+host: FROTHLY-FW1
+sourcetype: cisco:asa
+source: udp:514
+_raw:
+Aug 20 11:11:03 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 192.168.8.112/51121 to 192.168.9.30/80 flags ACK  on interface outside}
+",Aug 20 11:11:03 FROTHLY-FW1 %ASA-6-106015: Deny TCP (no connection) from 192.168.8.112/51121 to 192.168.9.30/80 flags ACK  on interface outside,BC:IM-NO BC:RO-IN BC:SE-NO TT:AC-NW TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NW AC:OS-NW AC:PH-OT AC:VE-OT
+2018-08-20T13:10:54.000+0200,FROTHLY-FW1,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-OT TT:AV-MI TT:FR-RE TT:BA-OT TT:DE-OT TT:IG-AC TT:MA-UN TT:SO-OT TT:VU-SE TA:AM-OT AC:IN-NE AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-DO TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-MO AC:OS-MI AC:PH-UN AC:VE-E-,4,0.23529411764705882,0,"**Incident Report**
+On August 20, 2018, at 11:10:54 AM CEST, a denial-of-service (DoS) attack was detected on the FROTHLY-FW1 firewall. The attack originated from an unknown source and targeted the outside interface of the firewall. The attacker attempted to establish a connection to port 8443 on IP address 204.107.141.110. The incident was likely caused by human error, as there is no indication of malicious intent or exploitation of vulnerabilities. The impact of this event is expected to be low, with minimal disruption to services.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T13:10:54.000+0200
+host: FROTHLY-FW1
+sourcetype: cisco:asa
+source: udp:514
+_raw:
+Aug 20 11:10:54 FROTHLY-FW1 %ASA-4-106023: Deny tcp src inside:192.168.9.50/59272 dst outside:204.107.141.110/8443 by access-group ""inside_access_in"" [0x0, 0x0]}
+","Aug 20 11:10:54 FROTHLY-FW1 %ASA-4-106023: Deny tcp src inside:192.168.9.50/59272 dst outside:204.107.141.110/8443 by access-group ""inside_access_in"" [0x0, 0x0]",BC:IM-NO BC:RO-IN BC:SE-NO TT:AC-NW TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NW AC:OS-NW AC:PH-OT AC:VE-OT
+2018-08-20T13:10:08.000+0200,mars.i-08e52f8b5a034012d,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-UN AC:OS-GN AC:PH-UN AC:VE-VA,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-E-,5,0.29411764705882354,0,"**Incident Report**
+On August 20, 2018, at 11:10:08 UTC+2, an invalid user attempt was detected on the Mars Linux system (host: mars.i-08e52f8b5a034012d). The attacker attempted to access the system using the username ""amit"" from IP address 62.210.95.34 and port 56954. This event is classified as a human error (BC:RO-HU) with low severity (BC:SE-LO). The attack vector was likely social engineering (TT:SO-PH), and the attacker's motivation was unknown (TA:AM-ID). The involved asset was a personal email account (AC:IN-PE), and the operating system was Microsoft Windows (AC:OS-MI). There is no physical security concern (AC:PH-UN) or vector other than email (AC:VE-E-).","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T13:10:08.000+0200
+host: mars.i-08e52f8b5a034012d
+sourcetype: linux_secure
+source: /var/log/secure
+_raw:
+Aug 20 11:10:08 ip-172-31-12-76 sshd[26236]: Invalid user amit from 62.210.95.34 port 56954}
+",Aug 20 11:10:08 ip-172-31-12-76 sshd[26236]: Invalid user amit from 62.210.95.34 port 56954,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-UN TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-UN TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-ID AC:IN-SR AC:OS-GN AC:PH-OT AC:VE-OT
+2018-08-20T13:44:04.000+0200,mars.i-08e52f8b5a034012d,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-UN AC:OS-GN AC:PH-UN AC:VE-VA,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-BT TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-EV,5,0.29411764705882354,0,"**Incident Report:**
+On August 20, 2018, at 11:44:04 UTC+2, an invalid user ""pi"" attempted to connect from IP address 109.31.137.150 and port 48204 to the Mars Linux server (host: mars.i-08e52f8b5a034012d). The attempt was likely a brute-force attack, as the source is unknown and the username is invalid. The impact is expected to be low, as no sensitive data was compromised. The root cause is human error, as an unauthorized user attempted to access the system. The severity is medium, as the event may indicate a potential vulnerability or misconfiguration.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T13:44:04.000+0200
+host: mars.i-08e52f8b5a034012d
+sourcetype: linux_secure
+source: /var/log/secure
+_raw:
+Aug 20 11:44:04 ip-172-31-12-76 sshd[5273]: Invalid user pi from 109.31.137.150 port 48204}
+",Aug 20 11:44:04 ip-172-31-12-76 sshd[5273]: Invalid user pi from 109.31.137.150 port 48204,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-UN TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-UN TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-ID AC:IN-SR AC:OS-GN AC:PH-OT AC:VE-OT
+2018-08-20T13:57:01.000+0200,MKRAEUS-L,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-UN AC:OS-MI AC:PH-UN AC:VE-VA,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT,10,0.5882352941176471,0,"**Incident Report:**
+[INCIDENT REPORT] A logon request failed due to the account being currently disabled. The attempt was made by AzureAD\\MalloryKraeusen from MKRAEUS-L.froth.ly using an explorer.exe process. The failure reason is ""Account currently disabled."" This event indicates a potential security incident, as an unauthorized access attempt was made.
+Please note that the classification and report are based solely on the provided logs and may not reflect the actual situation or intent behind the event.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T13:57:01.000+0200
+        host: MKRAEUS-L
+        sourcetype: WinEventLog:Security
+        source: WinEventLog:Security
+        _raw:
+        08/20/2018 11:57:01 AM
+LogName=Security
+SourceName=Microsoft Windows security auditing.
+EventCode=4625
+EventType=0
+Type=Information
+ComputerName=MKRAEUS-L.froth.ly
+TaskCategory=Logon
+OpCode=Info
+RecordNumber=445737
+Keywords=Audit Failure
+Message=An account failed to log on.
+
+Subject:
+	Security ID:		AzureAD\\MalloryKraeusen
+	Account Name:		MalloryKraeusen
+	Account Domain:		AzureAD
+	Logon ID:		0x74DD5
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Security ID:		NULL SID
+	Account Name:		Guest
+	Account Domain:		MKRAEUS-L
+
+Failure Information:
+	Failure Reason:		Account currently disabled.
+	Status:			0xC000006E
+	Sub Status:		0xC0000072
+
+Process Information:
+	Caller Process ID:	0x1c44
+	Caller Process Name:	C:\\Windows\\explorer.exe
+
+Network Information:
+	Workstation Name:	MKRAEUS-L
+	Source Network Address:	-
+	Source Port:		-
+
+Detailed Authentication Information:
+	Logon Process:		Advapi  
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon request fails. It is generated on the computer where access was attempted.
+
+The Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).
+
+The Process Information fields indicate which account and process on the system requested the logon.
+
+The Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.}
+","08/20/2018 11:57:01 AM
+LogName=Security
+SourceName=Microsoft Windows security auditing.
+EventCode=4625
+EventType=0
+Type=Information
+ComputerName=MKRAEUS-L.froth.ly
+TaskCategory=Logon
+OpCode=Info
+RecordNumber=445737
+Keywords=Audit Failure
+Message=An account failed to log on.
+
+Subject:
+	Security ID:		AzureAD\MalloryKraeusen
+	Account Name:		MalloryKraeusen
+	Account Domain:		AzureAD
+	Logon ID:		0x74DD5
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Security ID:		NULL SID
+	Account Name:		Guest
+	Account Domain:		MKRAEUS-L
+
+Failure Information:
+	Failure Reason:		Account currently disabled.
+	Status:			0xC000006E
+	Sub Status:		0xC0000072
+
+Process Information:
+	Caller Process ID:	0x1c44
+	Caller Process Name:	C:\Windows\explorer.exe
+
+Network Information:
+	Workstation Name:	MKRAEUS-L
+	Source Network Address:	-
+	Source Port:		-
+
+Detailed Authentication Information:
+	Logon Process:		Advapi  
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon request fails. It is generated on the computer where access was attempted.
+
+The Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).
+
+The Process Information fields indicate which account and process on the system requested the logon.
+
+The Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.",BC:IM-NO BC:RO-IN BC:SE-LO TT:AC-UN TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-UN TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-OT AC:OS-GN AC:PH-OT AC:VE-OT
+2018-08-20T11:47:50.268+0200,FYODOR-L,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-OT TT:AV-OT TT:FR-RE TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-WA AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT,12,0.7058823529411765,0,"**Incident Report:**
+On August 20, 2018, at 11:47:50 AM, an unusual network activity was detected on host FYODOR-L. The event involves a GET request to happyvalleybeer.com/system/cms/themes/default/img/hvr-bg.png from an unknown source (173.255.233.229). The request appears to be legitimate, but the high volume of data transferred (135,845 bytes) and the unusual user agent string suggest potential malicious activity. Further investigation is required to determine the intent behind this event.
+Please note that I have assumed the logs are from a web server (Apache/2.2.14) and the request is likely legitimate, but the high volume of data transferred and the unusual user agent string warrant further investigation.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T11:47:50.268+0200
+host: FYODOR-L
+sourcetype: stream:http
+source: stream:http
+_raw:
+{""endtime"":""2018-08-20T09:47:50.268060Z"",""timestamp"":""2018-08-20T09:47:49.971685Z"",""bytes"":137026,""src_mac"":""00:0C:29:55:51:1A"",""src_port"":59647,""bytes_in"":1181,""dest_ip"":""173.255.233.229"",""dest_mac"":""00:50:56:E3:C7:18"",""dest_port"":80,""bytes_out"":135845,""time_taken"":297609,""transport"":""tcp"",""flow_id"":""78524861-02fd-4780-9a2f-293502d5c5b0"",""src_ip"":""192.168.70.186"",""http_comment"":""HTTP/1.1 200 OK"",""http_content_length"":135548,""http_content_type"":""image/png"",""cookie"":""PHPSESSID=se53qg5bcn808qm0qpi4ahak85; default_pyrocms_development=WmizuxC94mObovCadcP%2F3WoBqy0O4gQJNKl8vct1BdCx5AdR4%2B2ff0aYZ38vwWYjNtG33HQyOysJUJAjqil5sEG%2FseVZi7VO7acSbmX2vejnz0QemqmvWEiZbGExs8oq%2B9m9Tn88AOs16MW1TErT40qyfgZzEB02QT%2FmKcWN4sAs6LSFGhfLHWV7038wgDdtw21hcyGlJdM4lZ9wWB586T4WdPg%2F8%2FWPQXMhhgQxSiKjX6HCcQlxx5%2BNxFYwpOxwzYdTqWQa6Mkyg5DguFtfjRp6IMIvFBXi8orfbyeRaUOdOw%2BfbbErMtUUqmJ71CVITgL2AvjELQmNlgiWYKQCUoM1TOVhU3xXMoSNpYRa5DbSucwd0FIAbAQASz9vnMlKdlCIXjDl1iHJhV3lgvo52jutfVstJ5cso6dwHKICV8w%3D; __utma=106028186.1641254612.1534758468.1532542908.1534758468.1; __utmc=106028186; __utmz=106028186.1534758468.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmt=1; __utmb=106028186.1.10.1534758468"",""site"":""happyvalleybeer.com"",""http_method"":""GET"",""http_referrer"":""http://happyvalleybeer.com/system/cms/themes/default/css/style.css"",""server"":""Apache/2.2.14 (Ubuntu)"",""status"":200,""uri_path"":""/system/cms/themes/default/img/hvr-bg.png"",""http_user_agent"":""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"",""protocol_stack"":""ip:tcp:http""\}}
+","{""endtime"":""2018-08-20T09:47:50.268060Z"",""timestamp"":""2018-08-20T09:47:49.971685Z"",""bytes"":137026,""src_mac"":""00:0C:29:55:51:1A"",""src_port"":59647,""bytes_in"":1181,""dest_ip"":""173.255.233.229"",""dest_mac"":""00:50:56:E3:C7:18"",""dest_port"":80,""bytes_out"":135845,""time_taken"":297609,""transport"":""tcp"",""flow_id"":""78524861-02fd-4780-9a2f-293502d5c5b0"",""src_ip"":""192.168.70.186"",""http_comment"":""HTTP/1.1 200 OK"",""http_content_length"":135548,""http_content_type"":""image/png"",""cookie"":""PHPSESSID=se53qg5bcn808qm0qpi4ahak85; default_pyrocms_development=WmizuxC94mObovCadcP%2F3WoBqy0O4gQJNKl8vct1BdCx5AdR4%2B2ff0aYZ38vwWYjNtG33HQyOysJUJAjqil5sEG%2FseVZi7VO7acSbmX2vejnz0QemqmvWEiZbGExs8oq%2B9m9Tn88AOs16MW1TErT40qyfgZzEB02QT%2FmKcWN4sAs6LSFGhfLHWV7038wgDdtw21hcyGlJdM4lZ9wWB586T4WdPg%2F8%2FWPQXMhhgQxSiKjX6HCcQlxx5%2BNxFYwpOxwzYdTqWQa6Mkyg5DguFtfjRp6IMIvFBXi8orfbyeRaUOdOw%2BfbbErMtUUqmJ71CVITgL2AvjELQmNlgiWYKQCUoM1TOVhU3xXMoSNpYRa5DbSucwd0FIAbAQASz9vnMlKdlCIXjDl1iHJhV3lgvo52jutfVstJ5cso6dwHKICV8w%3D; __utma=106028186.1641254612.1534758468.1532542908.1534758468.1; __utmc=106028186; __utmz=106028186.1534758468.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmt=1; __utmb=106028186.1.10.1534758468"",""site"":""happyvalleybeer.com"",""http_method"":""GET"",""http_referrer"":""http://happyvalleybeer.com/system/cms/themes/default/css/style.css"",""server"":""Apache/2.2.14 (Ubuntu)"",""status"":200,""uri_path"":""/system/cms/themes/default/img/hvr-bg.png"",""http_user_agent"":""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"",""protocol_stack"":""ip:tcp:http""}",BC:IM-NO BC:RO-IN BC:SE-NO TT:AC-NW TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NW AC:OS-NW AC:PH-OT AC:VE-OT
+2018-08-20T11:51:52.254+0200,FYODOR-L,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-OT TT:AV-OT TT:FR-RE TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-WA AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT,12,0.7058823529411765,0,"**Incident Report:**
+On August 20, 2018, at 11:51:52 AM, an unusual HTTP request was detected from host FYODOR-L. The request was a GET method to the URI path ""/system/cms/themes/default/css/rs/images/gradient/g30.png"" on happyvalleybeer.com. The request was made using Chrome 67.0.3396.99 and originated from IP address 192.168.70.186. The server responded with a 404 Not Found status code. This event is likely an anomaly, as the requested resource does not exist. Further investigation is required to determine the intent behind this request.
+Please note that I have assumed the logs are related to a single incident and classified it accordingly. If you would like me to analyze multiple events or provide more detailed information about this specific event, please let me know!","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T11:51:52.254+0200
+host: FYODOR-L
+sourcetype: stream:http
+source: stream:http
+_raw:
+{""endtime"":""2018-08-20T09:51:52.254674Z"",""timestamp"":""2018-08-20T09:51:51.870736Z"",""bytes"":5982,""src_mac"":""00:0C:29:55:51:1A"",""src_port"":59783,""bytes_in"":1210,""dest_ip"":""173.255.233.229"",""dest_mac"":""00:50:56:E3:C7:18"",""dest_port"":80,""bytes_out"":4772,""time_taken"":384033,""transport"":""tcp"",""flow_id"":""967ab261-2000-4420-ae9c-eaeec12c1699"",""src_ip"":""192.168.70.186"",""http_comment"":""HTTP/1.1 404 Not Found"",""http_content_length"":4353,""http_content_type"":""text/html"",""cookie"":""PHPSESSID=se53qg5bcn808qm0qpi4ahak85; default_pyrocms_development=WmizuxC94mObovCadcP%2F3WoBqy0O4gQJNKl8vct1BdCx5AdR4%2B2ff0aYZ38vwWYjNtG33HQyOysJUJAjqil5sEG%2FseVZi7VO7acSbmX2vejnz0QemqmvWEiZbGExs8oq%2B9m9Tn88AOs16MW1TErT40qyfgZzEB02QT%2FmKcWN4sAs6LSFGhfLHWV7038wgDdtw21hcyGlJdM4lZ9wWB586T4WdPg%2F8%2FWPQXMhhgQxSiKjX6HCcQlxx5%2BNxFYwpOxwzYdTqWQa6Mkyg5DguFtfjRp6IMIvFBXi8orfbyeRaUOdOw%2BfbbErMtUUqmJ71CVITgL2AvjELQmNlgiWYKQCUoM1TOVhU3xXMoSNpYRa5DbSucwd0FIAbAQASz9vnMlKdlCIXjDl1iHJhV3lgvo52jutfVstJ5cso6dwHKICV8w%3D; __utma=106028186.1641254612.1534758468.1532542908.1534758468.1; __utmc=106028186; __utmz=106028186.1534758468.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmt=1; __utmb=106028186.6.10.1534758468"",""site"":""happyvalleybeer.com"",""http_method"":""GET"",""http_referrer"":""http://happyvalleybeer.com/system/cms/themes/default/css/rs/css/rs-settings.css"",""server"":""Apache/2.2.14 (Ubuntu)"",""status"":404,""uri_path"":""/system/cms/themes/default/css/rs/images/gradient/g30.png"",""http_user_agent"":""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"",""protocol_stack"":""ip:tcp:http""\}}
+","{""endtime"":""2018-08-20T09:51:52.254674Z"",""timestamp"":""2018-08-20T09:51:51.870736Z"",""bytes"":5982,""src_mac"":""00:0C:29:55:51:1A"",""src_port"":59783,""bytes_in"":1210,""dest_ip"":""173.255.233.229"",""dest_mac"":""00:50:56:E3:C7:18"",""dest_port"":80,""bytes_out"":4772,""time_taken"":384033,""transport"":""tcp"",""flow_id"":""967ab261-2000-4420-ae9c-eaeec12c1699"",""src_ip"":""192.168.70.186"",""http_comment"":""HTTP/1.1 404 Not Found"",""http_content_length"":4353,""http_content_type"":""text/html"",""cookie"":""PHPSESSID=se53qg5bcn808qm0qpi4ahak85; default_pyrocms_development=WmizuxC94mObovCadcP%2F3WoBqy0O4gQJNKl8vct1BdCx5AdR4%2B2ff0aYZ38vwWYjNtG33HQyOysJUJAjqil5sEG%2FseVZi7VO7acSbmX2vejnz0QemqmvWEiZbGExs8oq%2B9m9Tn88AOs16MW1TErT40qyfgZzEB02QT%2FmKcWN4sAs6LSFGhfLHWV7038wgDdtw21hcyGlJdM4lZ9wWB586T4WdPg%2F8%2FWPQXMhhgQxSiKjX6HCcQlxx5%2BNxFYwpOxwzYdTqWQa6Mkyg5DguFtfjRp6IMIvFBXi8orfbyeRaUOdOw%2BfbbErMtUUqmJ71CVITgL2AvjELQmNlgiWYKQCUoM1TOVhU3xXMoSNpYRa5DbSucwd0FIAbAQASz9vnMlKdlCIXjDl1iHJhV3lgvo52jutfVstJ5cso6dwHKICV8w%3D; __utma=106028186.1641254612.1534758468.1532542908.1534758468.1; __utmc=106028186; __utmz=106028186.1534758468.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmt=1; __utmb=106028186.6.10.1534758468"",""site"":""happyvalleybeer.com"",""http_method"":""GET"",""http_referrer"":""http://happyvalleybeer.com/system/cms/themes/default/css/rs/css/rs-settings.css"",""server"":""Apache/2.2.14 (Ubuntu)"",""status"":404,""uri_path"":""/system/cms/themes/default/css/rs/images/gradient/g30.png"",""http_user_agent"":""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"",""protocol_stack"":""ip:tcp:http""}",BC:IM-NO BC:RO-IN BC:SE-NO TT:AC-NW TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NW AC:OS-NW AC:PH-OT AC:VE-OT
+2018-08-20T11:51:08.131+0200,FYODOR-L,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-OT TT:AV-OT TT:FR-RE TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-WA AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT,12,0.7058823529411765,0,"**Incident Report:**
+On August 20, 2018, at 09:51:07 UTC, an unusual HTTP request was detected from host FYODOR-L (192.168.70.186) to happyvalleybeer.com (173.255.233.229). The request was a GET method for the URI path ""/beer/12/nitwit"" and originated from a Windows 10 machine using Chrome 67.0.3396.99. The server responded with a HTTP status code of 200 OK. This event is likely an anomaly due to the unusual user agent and referrer information.
+Please note that this analysis is based solely on the provided logs and may not reflect the actual incident or its impact.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T11:51:08.131+0200
+host: FYODOR-L
+sourcetype: stream:http
+source: stream:http
+_raw:
+{""endtime"":""2018-08-20T09:51:08.131127Z"",""timestamp"":""2018-08-20T09:51:07.758192Z"",""bytes"":6201,""src_mac"":""00:0C:29:55:51:1A"",""src_port"":59769,""bytes_in"":1197,""dest_ip"":""173.255.233.229"",""dest_mac"":""00:50:56:E3:C7:18"",""dest_port"":80,""bytes_out"":5004,""time_taken"":373063,""transport"":""tcp"",""flow_id"":""15ee2ca6-bcaf-4459-90c9-95a5fcc58b78"",""src_ip"":""192.168.70.186"",""http_comment"":""HTTP/1.1 200 OK"",""http_content_length"":4592,""http_content_type"":""text/html"",""cookie"":""PHPSESSID=se53qg5bcn808qm0qpi4ahak85; default_pyrocms_development=WmizuxC94mObovCadcP%2F3WoBqy0O4gQJNKl8vct1BdCx5AdR4%2B2ff0aYZ38vwWYjNtG33HQyOysJUJAjqil5sEG%2FseVZi7VO7acSbmX2vejnz0QemqmvWEiZbGExs8oq%2B9m9Tn88AOs16MW1TErT40qyfgZzEB02QT%2FmKcWN4sAs6LSFGhfLHWV7038wgDdtw21hcyGlJdM4lZ9wWB586T4WdPg%2F8%2FWPQXMhhgQxSiKjX6HCcQlxx5%2BNxFYwpOxwzYdTqWQa6Mkyg5DguFtfjRp6IMIvFBXi8orfbyeRaUOdOw%2BfbbErMtUUqmJ71CVITgL2AvjELQmNlgiWYKQCUoM1TOVhU3xXMoSNpYRa5DbSucwd0FIAbAQASz9vnMlKdlCIXjDl1iHJhV3lgvo52jutfVstJ5cso6dwHKICV8w%3D; __utma=106028186.1641254612.1534758468.1532542908.1534758468.1; __utmc=106028186; __utmz=106028186.1534758468.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmt=1; __utmb=106028186.2.10.1534758468"",""site"":""happyvalleybeer.com"",""http_method"":""GET"",""http_referrer"":""http://happyvalleybeer.com/beers"",""server"":""Apache/2.2.14 (Ubuntu)"",""status"":200,""uri_path"":""/beer/12/nitwit"",""http_user_agent"":""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"",""protocol_stack"":""ip:tcp:http""\}}
+","{""endtime"":""2018-08-20T09:51:08.131127Z"",""timestamp"":""2018-08-20T09:51:07.758192Z"",""bytes"":6201,""src_mac"":""00:0C:29:55:51:1A"",""src_port"":59769,""bytes_in"":1197,""dest_ip"":""173.255.233.229"",""dest_mac"":""00:50:56:E3:C7:18"",""dest_port"":80,""bytes_out"":5004,""time_taken"":373063,""transport"":""tcp"",""flow_id"":""15ee2ca6-bcaf-4459-90c9-95a5fcc58b78"",""src_ip"":""192.168.70.186"",""http_comment"":""HTTP/1.1 200 OK"",""http_content_length"":4592,""http_content_type"":""text/html"",""cookie"":""PHPSESSID=se53qg5bcn808qm0qpi4ahak85; default_pyrocms_development=WmizuxC94mObovCadcP%2F3WoBqy0O4gQJNKl8vct1BdCx5AdR4%2B2ff0aYZ38vwWYjNtG33HQyOysJUJAjqil5sEG%2FseVZi7VO7acSbmX2vejnz0QemqmvWEiZbGExs8oq%2B9m9Tn88AOs16MW1TErT40qyfgZzEB02QT%2FmKcWN4sAs6LSFGhfLHWV7038wgDdtw21hcyGlJdM4lZ9wWB586T4WdPg%2F8%2FWPQXMhhgQxSiKjX6HCcQlxx5%2BNxFYwpOxwzYdTqWQa6Mkyg5DguFtfjRp6IMIvFBXi8orfbyeRaUOdOw%2BfbbErMtUUqmJ71CVITgL2AvjELQmNlgiWYKQCUoM1TOVhU3xXMoSNpYRa5DbSucwd0FIAbAQASz9vnMlKdlCIXjDl1iHJhV3lgvo52jutfVstJ5cso6dwHKICV8w%3D; __utma=106028186.1641254612.1534758468.1532542908.1534758468.1; __utmc=106028186; __utmz=106028186.1534758468.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmt=1; __utmb=106028186.2.10.1534758468"",""site"":""happyvalleybeer.com"",""http_method"":""GET"",""http_referrer"":""http://happyvalleybeer.com/beers"",""server"":""Apache/2.2.14 (Ubuntu)"",""status"":200,""uri_path"":""/beer/12/nitwit"",""http_user_agent"":""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"",""protocol_stack"":""ip:tcp:http""}",BC:IM-NO BC:RO-IN BC:SE-NO TT:AC-NW TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NW AC:OS-NW AC:PH-OT AC:VE-OT
+2018-08-20T11:51:02.768+0200,FYODOR-L,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-OT TT:AV-OT TT:FR-RE TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-WA AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT,12,0.7058823529411765,0,"**Incident Report:**
+On August 20, 2018, at 11:51:02 AM, an unusual network activity was detected on host FYODOR-L. The event involves a GET request to the URI path ""/system/cms/themes/default/css/font/fontawesome-webfont.woff"" from IP address ""192.168.70.186"". The request appears to be legitimate, but further investigation is needed to determine the intent behind this action.
+**Classification:**
+1. BC:IM-NO (Impact: No impact)
+2. BC:RO-HU (Reason: Human error or unknown)
+3. BC:SE-NO (Severity: No severity)
+4. TT:AC-OT (Attack vector: Other)
+5. TT:AV-OT (Attack type: Other)
+6. TT:FR-OT (Focal point: Other)
+7. TT:BA-OT (Behavioral analysis: Other)
+8. TT:DE-OT (Data exfiltration: Other)
+9. TT:IG-OT (Initial gateway: Other)
+10. TT:MA-UN (Malware: Unknown)
+11. TT:SO-OT (Social engineering: Other)
+12. TT:VU-OT (Vector: Other)
+13. TA:AM-OT (Attack motive: Other)
+14. AC:IN-SR (Involved asset: Server)
+15. AC:OS-MI (Operating system: Microsoft Windows)
+16. AC:PH-OT (Physical security: Other)
+17. AC:VE-OT (Vector: Other)
+Please note that the classification is based on the provided logs and may not reflect the actual incident details or severity.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T11:51:02.768+0200
+host: FYODOR-L
+sourcetype: stream:http
+source: stream:http
+_raw:
+{""endtime"":""2018-08-20T09:51:02.768184Z"",""timestamp"":""2018-08-20T09:51:02.649243Z"",""bytes"":30883,""src_mac"":""00:0C:29:55:51:1A"",""src_port"":59766,""bytes_in"":1207,""dest_ip"":""173.255.233.229"",""dest_mac"":""00:50:56:E3:C7:18"",""dest_port"":80,""bytes_out"":29676,""time_taken"":119001,""transport"":""tcp"",""flow_id"":""36451e5a-734b-4844-84ab-fe23e8b62f6b"",""src_ip"":""192.168.70.186"",""http_comment"":""HTTP/1.1 200 OK"",""http_content_length"":29380,""http_content_type"":""text/plain"",""cookie"":""PHPSESSID=se53qg5bcn808qm0qpi4ahak85; default_pyrocms_development=WmizuxC94mObovCadcP%2F3WoBqy0O4gQJNKl8vct1BdCx5AdR4%2B2ff0aYZ38vwWYjNtG33HQyOysJUJAjqil5sEG%2FseVZi7VO7acSbmX2vejnz0QemqmvWEiZbGExs8oq%2B9m9Tn88AOs16MW1TErT40qyfgZzEB02QT%2FmKcWN4sAs6LSFGhfLHWV7038wgDdtw21hcyGlJdM4lZ9wWB586T4WdPg%2F8%2FWPQXMhhgQxSiKjX6HCcQlxx5%2BNxFYwpOxwzYdTqWQa6Mkyg5DguFtfjRp6IMIvFBXi8orfbyeRaUOdOw%2BfbbErMtUUqmJ71CVITgL2AvjELQmNlgiWYKQCUoM1TOVhU3xXMoSNpYRa5DbSucwd0FIAbAQASz9vnMlKdlCIXjDl1iHJhV3lgvo52jutfVstJ5cso6dwHKICV8w%3D; __utma=106028186.1641254612.1534758468.1532542908.1534758468.1; __utmc=106028186; __utmz=106028186.1534758468.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmt=1; __utmb=106028186.2.10.1534758468"",""site"":""happyvalleybeer.com"",""http_method"":""GET"",""http_referrer"":""http://happyvalleybeer.com/system/cms/themes/default/css/font-awesome.css"",""server"":""Apache/2.2.14 (Ubuntu)"",""status"":200,""uri_path"":""/system/cms/themes/default/css/font/fontawesome-webfont.woff"",""http_user_agent"":""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"",""protocol_stack"":""ip:tcp:http""\}}
+","{""endtime"":""2018-08-20T09:51:02.768184Z"",""timestamp"":""2018-08-20T09:51:02.649243Z"",""bytes"":30883,""src_mac"":""00:0C:29:55:51:1A"",""src_port"":59766,""bytes_in"":1207,""dest_ip"":""173.255.233.229"",""dest_mac"":""00:50:56:E3:C7:18"",""dest_port"":80,""bytes_out"":29676,""time_taken"":119001,""transport"":""tcp"",""flow_id"":""36451e5a-734b-4844-84ab-fe23e8b62f6b"",""src_ip"":""192.168.70.186"",""http_comment"":""HTTP/1.1 200 OK"",""http_content_length"":29380,""http_content_type"":""text/plain"",""cookie"":""PHPSESSID=se53qg5bcn808qm0qpi4ahak85; default_pyrocms_development=WmizuxC94mObovCadcP%2F3WoBqy0O4gQJNKl8vct1BdCx5AdR4%2B2ff0aYZ38vwWYjNtG33HQyOysJUJAjqil5sEG%2FseVZi7VO7acSbmX2vejnz0QemqmvWEiZbGExs8oq%2B9m9Tn88AOs16MW1TErT40qyfgZzEB02QT%2FmKcWN4sAs6LSFGhfLHWV7038wgDdtw21hcyGlJdM4lZ9wWB586T4WdPg%2F8%2FWPQXMhhgQxSiKjX6HCcQlxx5%2BNxFYwpOxwzYdTqWQa6Mkyg5DguFtfjRp6IMIvFBXi8orfbyeRaUOdOw%2BfbbErMtUUqmJ71CVITgL2AvjELQmNlgiWYKQCUoM1TOVhU3xXMoSNpYRa5DbSucwd0FIAbAQASz9vnMlKdlCIXjDl1iHJhV3lgvo52jutfVstJ5cso6dwHKICV8w%3D; __utma=106028186.1641254612.1534758468.1532542908.1534758468.1; __utmc=106028186; __utmz=106028186.1534758468.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmt=1; __utmb=106028186.2.10.1534758468"",""site"":""happyvalleybeer.com"",""http_method"":""GET"",""http_referrer"":""http://happyvalleybeer.com/system/cms/themes/default/css/font-awesome.css"",""server"":""Apache/2.2.14 (Ubuntu)"",""status"":200,""uri_path"":""/system/cms/themes/default/css/font/fontawesome-webfont.woff"",""http_user_agent"":""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"",""protocol_stack"":""ip:tcp:http""}",BC:IM-NO BC:RO-IN BC:SE-NO TT:AC-NW TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NW AC:OS-NW AC:PH-OT AC:VE-OT
+2018-08-20T11:51:01.736+0200,FYODOR-L,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-OT TT:AV-OT TT:FR-RE TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-WA AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT,12,0.7058823529411765,0,"**Incident Report:**
+On August 20, 2018, at 11:51:01 AM, an unusual HTTP request was detected from host FYODOR-L. The request was a GET method to the URI path ""/system/cms/themes/default/css/rs/images/gradient/g30.png"" on happyvalleybeer.com. The request was made using Chrome 67.0.3396.99 and originated from IP address 192.168.70.186. The server responded with a 404 Not Found status code. Further analysis suggests that this event may be related to an attempted file access or a reconnaissance activity.
+Please note that the classification is based on the provided logs and ACN taxonomy, and it might not cover all possible scenarios or nuances.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T11:51:01.736+0200
+host: FYODOR-L
+sourcetype: stream:http
+source: stream:http
+_raw:
+{""endtime"":""2018-08-20T09:51:01.736972Z"",""timestamp"":""2018-08-20T09:51:00.665966Z"",""bytes"":5982,""src_mac"":""00:0C:29:55:51:1A"",""src_port"":59763,""bytes_in"":1210,""dest_ip"":""173.255.233.229"",""dest_mac"":""00:50:56:E3:C7:18"",""dest_port"":80,""bytes_out"":4772,""time_taken"":1071006,""transport"":""tcp"",""flow_id"":""67680246-7b2a-4652-8ef7-981a5bb83ed4"",""src_ip"":""192.168.70.186"",""http_comment"":""HTTP/1.1 404 Not Found"",""http_content_length"":4353,""http_content_type"":""text/html"",""cookie"":""PHPSESSID=se53qg5bcn808qm0qpi4ahak85; default_pyrocms_development=WmizuxC94mObovCadcP%2F3WoBqy0O4gQJNKl8vct1BdCx5AdR4%2B2ff0aYZ38vwWYjNtG33HQyOysJUJAjqil5sEG%2FseVZi7VO7acSbmX2vejnz0QemqmvWEiZbGExs8oq%2B9m9Tn88AOs16MW1TErT40qyfgZzEB02QT%2FmKcWN4sAs6LSFGhfLHWV7038wgDdtw21hcyGlJdM4lZ9wWB586T4WdPg%2F8%2FWPQXMhhgQxSiKjX6HCcQlxx5%2BNxFYwpOxwzYdTqWQa6Mkyg5DguFtfjRp6IMIvFBXi8orfbyeRaUOdOw%2BfbbErMtUUqmJ71CVITgL2AvjELQmNlgiWYKQCUoM1TOVhU3xXMoSNpYRa5DbSucwd0FIAbAQASz9vnMlKdlCIXjDl1iHJhV3lgvo52jutfVstJ5cso6dwHKICV8w%3D; __utma=106028186.1641254612.1534758468.1532542908.1534758468.1; __utmc=106028186; __utmz=106028186.1534758468.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmt=1; __utmb=106028186.1.10.1534758468"",""site"":""happyvalleybeer.com"",""http_method"":""GET"",""http_referrer"":""http://happyvalleybeer.com/system/cms/themes/default/css/rs/css/rs-settings.css"",""server"":""Apache/2.2.14 (Ubuntu)"",""status"":404,""uri_path"":""/system/cms/themes/default/css/rs/images/gradient/g30.png"",""http_user_agent"":""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"",""protocol_stack"":""ip:tcp:http""\}}
+","{""endtime"":""2018-08-20T09:51:01.736972Z"",""timestamp"":""2018-08-20T09:51:00.665966Z"",""bytes"":5982,""src_mac"":""00:0C:29:55:51:1A"",""src_port"":59763,""bytes_in"":1210,""dest_ip"":""173.255.233.229"",""dest_mac"":""00:50:56:E3:C7:18"",""dest_port"":80,""bytes_out"":4772,""time_taken"":1071006,""transport"":""tcp"",""flow_id"":""67680246-7b2a-4652-8ef7-981a5bb83ed4"",""src_ip"":""192.168.70.186"",""http_comment"":""HTTP/1.1 404 Not Found"",""http_content_length"":4353,""http_content_type"":""text/html"",""cookie"":""PHPSESSID=se53qg5bcn808qm0qpi4ahak85; default_pyrocms_development=WmizuxC94mObovCadcP%2F3WoBqy0O4gQJNKl8vct1BdCx5AdR4%2B2ff0aYZ38vwWYjNtG33HQyOysJUJAjqil5sEG%2FseVZi7VO7acSbmX2vejnz0QemqmvWEiZbGExs8oq%2B9m9Tn88AOs16MW1TErT40qyfgZzEB02QT%2FmKcWN4sAs6LSFGhfLHWV7038wgDdtw21hcyGlJdM4lZ9wWB586T4WdPg%2F8%2FWPQXMhhgQxSiKjX6HCcQlxx5%2BNxFYwpOxwzYdTqWQa6Mkyg5DguFtfjRp6IMIvFBXi8orfbyeRaUOdOw%2BfbbErMtUUqmJ71CVITgL2AvjELQmNlgiWYKQCUoM1TOVhU3xXMoSNpYRa5DbSucwd0FIAbAQASz9vnMlKdlCIXjDl1iHJhV3lgvo52jutfVstJ5cso6dwHKICV8w%3D; __utma=106028186.1641254612.1534758468.1532542908.1534758468.1; __utmc=106028186; __utmz=106028186.1534758468.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmt=1; __utmb=106028186.1.10.1534758468"",""site"":""happyvalleybeer.com"",""http_method"":""GET"",""http_referrer"":""http://happyvalleybeer.com/system/cms/themes/default/css/rs/css/rs-settings.css"",""server"":""Apache/2.2.14 (Ubuntu)"",""status"":404,""uri_path"":""/system/cms/themes/default/css/rs/images/gradient/g30.png"",""http_user_agent"":""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"",""protocol_stack"":""ip:tcp:http""}",BC:IM-NO BC:RO-IN BC:SE-NO TT:AC-NW TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NW AC:OS-NW AC:PH-OT AC:VE-OT
+2018-08-20T11:51:01.535+0200,FYODOR-L,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-OT TT:AV-OT TT:FR-RE TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-WA AC:OS-OT AC:PH-OT AC:VE-OT,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT,12,0.7058823529411765,0,"**Incident Report:**
+On August 20, 2018, at 09:51:00.389583Z, an unusual network activity was detected on host FYODOR-L. The event involves a GET request to happyvalleybeer.com/beers from an unknown source (173.255.233.229). The request is likely legitimate, as it returns a HTTP/1.1 200 OK response with image/jpeg content type. However, the high volume of bytes transferred (68253) and the unusual cookie values suggest potential malicious activity. Further investigation is required to determine the intent behind this event.
+Please note that I have assumed the logs are from a web server (Apache) and the request is likely legitimate based on the HTTP response code and content type. However, the high volume of bytes transferred and unusual cookie values do raise some concerns.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T11:51:01.535+0200
+host: FYODOR-L
+sourcetype: stream:http
+source: stream:http
+_raw:
+{""endtime"":""2018-08-20T09:51:01.535778Z"",""timestamp"":""2018-08-20T09:51:00.389583Z"",""bytes"":69387,""src_mac"":""00:0C:29:55:51:1A"",""src_port"":59766,""bytes_in"":1134,""dest_ip"":""173.255.233.229"",""dest_mac"":""00:50:56:E3:C7:18"",""dest_port"":80,""bytes_out"":68253,""time_taken"":1146261,""transport"":""tcp"",""flow_id"":""36451e5a-734b-4844-84ab-fe23e8b62f6b"",""src_ip"":""192.168.70.186"",""http_comment"":""HTTP/1.1 200 OK"",""http_content_type"":""image/jpeg"",""cookie"":""PHPSESSID=se53qg5bcn808qm0qpi4ahak85; default_pyrocms_development=WmizuxC94mObovCadcP%2F3WoBqy0O4gQJNKl8vct1BdCx5AdR4%2B2ff0aYZ38vwWYjNtG33HQyOysJUJAjqil5sEG%2FseVZi7VO7acSbmX2vejnz0QemqmvWEiZbGExs8oq%2B9m9Tn88AOs16MW1TErT40qyfgZzEB02QT%2FmKcWN4sAs6LSFGhfLHWV7038wgDdtw21hcyGlJdM4lZ9wWB586T4WdPg%2F8%2FWPQXMhhgQxSiKjX6HCcQlxx5%2BNxFYwpOxwzYdTqWQa6Mkyg5DguFtfjRp6IMIvFBXi8orfbyeRaUOdOw%2BfbbErMtUUqmJ71CVITgL2AvjELQmNlgiWYKQCUoM1TOVhU3xXMoSNpYRa5DbSucwd0FIAbAQASz9vnMlKdlCIXjDl1iHJhV3lgvo52jutfVstJ5cso6dwHKICV8w%3D; __utma=106028186.1641254612.1534758468.1532542908.1534758468.1; __utmc=106028186; __utmz=106028186.1534758468.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmt=1; __utmb=106028186.1.10.1534758468"",""site"":""happyvalleybeer.com"",""http_method"":""GET"",""http_referrer"":""http://happyvalleybeer.com/beers"",""server"":""Apache/2.2.14 (Ubuntu)"",""status"":200,""uri_path"":""/files/large/1f77eddc796f227"",""http_user_agent"":""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"",""protocol_stack"":""ip:tcp:http""\}}
+","{""endtime"":""2018-08-20T09:51:01.535778Z"",""timestamp"":""2018-08-20T09:51:00.389583Z"",""bytes"":69387,""src_mac"":""00:0C:29:55:51:1A"",""src_port"":59766,""bytes_in"":1134,""dest_ip"":""173.255.233.229"",""dest_mac"":""00:50:56:E3:C7:18"",""dest_port"":80,""bytes_out"":68253,""time_taken"":1146261,""transport"":""tcp"",""flow_id"":""36451e5a-734b-4844-84ab-fe23e8b62f6b"",""src_ip"":""192.168.70.186"",""http_comment"":""HTTP/1.1 200 OK"",""http_content_type"":""image/jpeg"",""cookie"":""PHPSESSID=se53qg5bcn808qm0qpi4ahak85; default_pyrocms_development=WmizuxC94mObovCadcP%2F3WoBqy0O4gQJNKl8vct1BdCx5AdR4%2B2ff0aYZ38vwWYjNtG33HQyOysJUJAjqil5sEG%2FseVZi7VO7acSbmX2vejnz0QemqmvWEiZbGExs8oq%2B9m9Tn88AOs16MW1TErT40qyfgZzEB02QT%2FmKcWN4sAs6LSFGhfLHWV7038wgDdtw21hcyGlJdM4lZ9wWB586T4WdPg%2F8%2FWPQXMhhgQxSiKjX6HCcQlxx5%2BNxFYwpOxwzYdTqWQa6Mkyg5DguFtfjRp6IMIvFBXi8orfbyeRaUOdOw%2BfbbErMtUUqmJ71CVITgL2AvjELQmNlgiWYKQCUoM1TOVhU3xXMoSNpYRa5DbSucwd0FIAbAQASz9vnMlKdlCIXjDl1iHJhV3lgvo52jutfVstJ5cso6dwHKICV8w%3D; __utma=106028186.1641254612.1534758468.1532542908.1534758468.1; __utmc=106028186; __utmz=106028186.1534758468.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); __utmt=1; __utmb=106028186.1.10.1534758468"",""site"":""happyvalleybeer.com"",""http_method"":""GET"",""http_referrer"":""http://happyvalleybeer.com/beers"",""server"":""Apache/2.2.14 (Ubuntu)"",""status"":200,""uri_path"":""/files/large/1f77eddc796f227"",""http_user_agent"":""Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"",""protocol_stack"":""ip:tcp:http""}",BC:IM-NO BC:RO-IN BC:SE-NO TT:AC-NW TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-NW AC:OS-NW AC:PH-OT AC:VE-OT
+2018-08-20T11:29:43.000+0200,SEPM,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-UN AC:OS-MI AC:PH-UN AC:VE-VA,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT,10,0.5882352941176471,0,"**Incident Report:**
+[INCIDENT REPORT] A logon request failed on the SEPM host. The attempted login was from an unknown account (SEPM$) with a failure reason of ""An Error occurred during Logon."" The likely impact is that the login attempt was unsuccessful, and no further action was taken.
+Note: As this event does not involve any malicious activity or exploitation, I have classified it as NO/OT/UN for most predicates.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T11:29:43.000+0200
+        host: SEPM
+        sourcetype: WinEventLog:Security
+        source: WinEventLog:Security
+        _raw:
+        08/20/2018 09:29:43 AM
+LogName=Security
+SourceName=Microsoft Windows security auditing.
+EventCode=4625
+EventType=0
+Type=Information
+ComputerName=SEPM
+TaskCategory=Logon
+OpCode=Info
+RecordNumber=1285
+Keywords=Audit Failure
+Message=An account failed to log on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		SEPM$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Type:			5
+
+Account For Which Logon Failed:
+	Security ID:		S-1-0-0
+	Account Name:		-
+	Account Domain:		-
+
+Failure Information:
+	Failure Reason:		An Error occured during Logon.
+	Status:			0xC0000073
+	Sub Status:		0xC0000073
+
+Process Information:
+	Caller Process ID:	0x4fc
+	Caller Process Name:	C:\\Windows\\System32\\svchost.exe
+
+Network Information:
+	Workstation Name:	-
+	Source Network Address:	-
+	Source Port:		-
+
+Detailed Authentication Information:
+	Logon Process:		Advapi  
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon request fails. It is generated on the computer where access was attempted.
+
+The Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).
+
+The Process Information fields indicate which account and process on the system requested the logon.
+
+The Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.}
+","08/20/2018 09:29:43 AM
+LogName=Security
+SourceName=Microsoft Windows security auditing.
+EventCode=4625
+EventType=0
+Type=Information
+ComputerName=SEPM
+TaskCategory=Logon
+OpCode=Info
+RecordNumber=1285
+Keywords=Audit Failure
+Message=An account failed to log on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		SEPM$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Type:			5
+
+Account For Which Logon Failed:
+	Security ID:		S-1-0-0
+	Account Name:		-
+	Account Domain:		-
+
+Failure Information:
+	Failure Reason:		An Error occured during Logon.
+	Status:			0xC0000073
+	Sub Status:		0xC0000073
+
+Process Information:
+	Caller Process ID:	0x4fc
+	Caller Process Name:	C:\Windows\System32\svchost.exe
+
+Network Information:
+	Workstation Name:	-
+	Source Network Address:	-
+	Source Port:		-
+
+Detailed Authentication Information:
+	Logon Process:		Advapi  
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon request fails. It is generated on the computer where access was attempted.
+
+The Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).
+
+The Process Information fields indicate which account and process on the system requested the logon.
+
+The Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.",BC:IM-NO BC:RO-IN BC:SE-NO TT:AC-AU TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-AU AC:OS-MI AC:PH-OT AC:VE-OT
+2018-08-20T11:29:43.000+0200,SEPM,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-UN AC:OS-MI AC:PH-UN AC:VE-VA,BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT,10,0.5882352941176471,0,"**Incident Report:**
+[INCIDENT REPORT] A logon request failed on the SEPM host. The attempted login was from an unknown account (SEPM$) with a failure reason of ""An Error occurred during Logon."" The likely impact is that the login attempt was unsuccessful, and no further access was granted.
+Note: As this event is related to a failed logon attempt, I have classified it as NO/OT/UN for most predicates.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T11:29:43.000+0200
+        host: SEPM
+        sourcetype: WinEventLog:Security
+        source: WinEventLog:Security
+        _raw:
+        08/20/2018 09:29:43 AM
+LogName=Security
+SourceName=Microsoft Windows security auditing.
+EventCode=4625
+EventType=0
+Type=Information
+ComputerName=SEPM
+TaskCategory=Logon
+OpCode=Info
+RecordNumber=1284
+Keywords=Audit Failure
+Message=An account failed to log on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		SEPM$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Type:			5
+
+Account For Which Logon Failed:
+	Security ID:		S-1-0-0
+	Account Name:		-
+	Account Domain:		-
+
+Failure Information:
+	Failure Reason:		An Error occured during Logon.
+	Status:			0xC0000073
+	Sub Status:		0xC0000073
+
+Process Information:
+	Caller Process ID:	0x4fc
+	Caller Process Name:	C:\\Windows\\System32\\svchost.exe
+
+Network Information:
+	Workstation Name:	-
+	Source Network Address:	-
+	Source Port:		-
+
+Detailed Authentication Information:
+	Logon Process:		Advapi  
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon request fails. It is generated on the computer where access was attempted.
+
+The Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).
+
+The Process Information fields indicate which account and process on the system requested the logon.
+
+The Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.}
+","08/20/2018 09:29:43 AM
+LogName=Security
+SourceName=Microsoft Windows security auditing.
+EventCode=4625
+EventType=0
+Type=Information
+ComputerName=SEPM
+TaskCategory=Logon
+OpCode=Info
+RecordNumber=1284
+Keywords=Audit Failure
+Message=An account failed to log on.
+
+Subject:
+	Security ID:		S-1-5-18
+	Account Name:		SEPM$
+	Account Domain:		WORKGROUP
+	Logon ID:		0x3E7
+
+Logon Type:			5
+
+Account For Which Logon Failed:
+	Security ID:		S-1-0-0
+	Account Name:		-
+	Account Domain:		-
+
+Failure Information:
+	Failure Reason:		An Error occured during Logon.
+	Status:			0xC0000073
+	Sub Status:		0xC0000073
+
+Process Information:
+	Caller Process ID:	0x4fc
+	Caller Process Name:	C:\Windows\System32\svchost.exe
+
+Network Information:
+	Workstation Name:	-
+	Source Network Address:	-
+	Source Port:		-
+
+Detailed Authentication Information:
+	Logon Process:		Advapi  
+	Authentication Package:	Negotiate
+	Transited Services:	-
+	Package Name (NTLM only):	-
+	Key Length:		0
+
+This event is generated when a logon request fails. It is generated on the computer where access was attempted.
+
+The Subject fields indicate the account on the local system which requested the logon. This is most commonly a service such as the Server service, or a local process such as Winlogon.exe or Services.exe.
+
+The Logon Type field indicates the kind of logon that was requested. The most common types are 2 (interactive) and 3 (network).
+
+The Process Information fields indicate which account and process on the system requested the logon.
+
+The Network Information fields indicate where a remote logon request originated. Workstation name is not always available and may be left blank in some cases.
+
+The authentication information fields provide detailed information about this specific logon request.
+	- Transited services indicate which intermediate services have participated in this logon request.
+	- Package name indicates which sub-protocol was used among the NTLM protocols.
+	- Key length indicates the length of the generated session key. This will be 0 if no session key was requested.",BC:IM-NO BC:RO-IN BC:SE-NO TT:AC-AU TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-AU AC:OS-MI AC:PH-OT AC:VE-OT
+2018-08-20T11:26:37.000+0200,mars.i-08e52f8b5a034012d,BC:IM-NO BC:RO-MA BC:SE-ME TT:AC-CR TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-UN AC:OS-GN AC:PH-UN AC:VE-VA,BC:IM-NO BC:RO-HU BC:SE-LO TT:AC-CR TT:AV-MI TT:FR-OT TT:BA-OT TT:DE-AU TT:IG-SO TT:MA-IN TT:SO-PH TT:VU-N TA:AM-ID AC:IN-PE AC:OS-MI AC:PH-UN AC:VE-E-,5,0.29411764705882354,0,"**Incident Report**
+On August 20, 2018, at 09:26:37 UTC+2, an invalid user attempt was detected on the Mars Linux system (host: mars.i-08e52f8b5a034012d). The attacker used a remote IP address (123.233.118.226) and port 2931 to connect to the SSH service. This event is likely a reconnaissance activity, possibly part of a larger phishing or social engineering campaign. The impact is expected to be low, as no sensitive data was compromised.","You are a cybersecurity incident analyst trained to classify events using the Italian ""ACN - Tassonomia Cyber"". You receive one or more LOGS/EVENTS. Use ONLY the taxonomy summary that you have studied previously (do not invent new categories).
+
+------------------------------------------------------------
+
+YOUR TASKS:
+
+1. Parse the logs (IPs, ports, accounts, processes, timestamps, auth details, errors, anomalies).
+2. Classify the event strictly according to the ACN taxonomy.
+3. Output EXACTLY one value for each of the 17 predicates (strict order):
+   1 BC:IM-<value>   2 BC:RO-<value>   3 BC:SE-<value>   4 TT:AC-<value>
+   5 TT:AV-<value>   6 TT:FR-<value>   7 TT:BA-<value>   8 TT:DE-<value>
+   9 TT:IG-<value>  10 TT:MA-<value>  11 TT:SO-<value>  12 TT:VU-<value>
+  13 TA:AM-<value>  14 AC:IN-<value>  15 AC:OS-<value>  16 AC:PH-<value>
+  17 AC:VE-<value>
+   - Always output 1 value per predicate.
+   - If no match exists, use NO/OT/UN as appropriate.
+4. Produce a SHORT INCIDENT REPORT (5-7 sentences): describe what happened, involved assets, indicators, intent (if any), and likely impact. Base conclusions ONLY on logs.
+
+------------------------------------------------------------
+
+OUTPUT FORMAT (MANDATORY)
+
+First line: 17-field ACN vector (space-separated)
+
+Second section:
+
+[INCIDENT REPORT] + short narrative.
+
+Example:
+BC:IM-NO BC:RO-HU BC:SE-NO TT:AC-OT TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-OT AC:IN-SR AC:OS-MI AC:PH-OT AC:VE-OT
+
+------------------------------------------------------------
+
+LOGS/EVENTS TO ANALYZE
+
+\texttt{_time: 2018-08-20T11:26:37.000+0200
+host: mars.i-08e52f8b5a034012d
+sourcetype: linux_secure
+source: /var/log/secure
+_raw:
+Aug 20 09:26:37 ip-172-31-12-76 sshd[14965]: Invalid user TFS from 123.233.118.226 port 2931}
+",Aug 20 09:26:37 ip-172-31-12-76 sshd[14965]: Invalid user TFS from 123.233.118.226 port 2931,BC:IM-NO BC:RO-EX BC:SE-LO TT:AC-AU TT:AV-OT TT:FR-OT TT:BA-OT TT:DE-OT TT:IG-OT TT:MA-UN TT:SO-OT TT:VU-OT TA:AM-SU AC:IN-AU AC:OS-LI AC:PH-OT AC:VE-OT
+SUMMARY,,,,,0.363499246,0,,,,
