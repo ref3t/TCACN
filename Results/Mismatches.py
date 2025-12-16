@@ -8,6 +8,7 @@ Each series is treated as an experiment and rendered as a separate box.
 from __future__ import annotations
 
 import argparse
+from collections import OrderedDict
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -16,35 +17,21 @@ import pandas as pd
 
 
 # =============================
-# Data (hard-coded)
+# Configuration
 # =============================
 
-GROUND_TRUTH = [
-    13,8,13,13,13,13,8,13,8,7,13,13,8,8,13,10,8,10,14,10,10,8,8,9,7,13,13,13,8,8,8,14,14,14,14,14,14,7,7,8
-]
+DEFAULT_DATASET = Path("Data") / "FFFFFFinalResults.xlsx"
+DEFAULT_EXPERIMENT = "GPT+_TC-CAN_With_File_Different_Session"
+GROUND_TRUTH_COLUMN = "TC-CAN_GroundTruth_ot_equivalent_count"
 
-GPT_COUNT = [
-    15,14,14,14,15,15,15,14,14,15,14,13,14,15,14,17,13,15,15,16,14,13,13,13,13,15,14,13,15,15,16,16,16,16,14,15,17,16,16,15
-]
-
-MISMATCH = [
-    5,8,5,5,4,4,8,5,8,10,6,6,7,10,6,9,7,8,3,8,8,8,8,6,7,4,5,4,9,9,10,2,2,3,2,4,10,11,10,10
-]
-
-
-SERIES_MAP = {
-    "GroundTruth_OT_Count": pd.Series(GROUND_TRUTH),
-    "GPT_OT_Count": pd.Series(GPT_COUNT),
-    "GroundTruth_GPT_OT_Mismatch_Count": pd.Series(MISMATCH),
+FRIENDLY_EXPERIMENT_NAMES = {
+    "GPT+_TC-CAN_With_File_Same_Session": "ProChatGPTWithTaxonomyFileWithSameSession",
+    "GPT+_TC-CAN_Without_File_Same_Session": "ProChatGPTWithoutTaxonomyFileWithSameSession",
+    "GPT+_TC-CAN_Without_File_Different_Session": "ProChatGPTWithoutTaxonomyFileWithDifferentSession",
+    "GPT+_TC-CAN_With_File_Different_Session": "ProChatGPTWithTaxonomyFileWithDifferentSession",
+    "LLM Free ( Same session)": "FreeChatGPTWithSameSession",
+    "LLM Free ( Different session)": "FreeChatGPTWithDifferentSession",
 }
-
-
-# Order of appearance in plot
-ORDERED_SERIES = [
-    "GroundTruth_OT_Count",
-    "GPT_OT_Count",
-    "GroundTruth_GPT_OT_Mismatch_Count",
-]
 
 
 # =============================
@@ -55,6 +42,17 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Plot OT count distributions",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--dataset",
+        type=Path,
+        default=DEFAULT_DATASET,
+        help="Excel file that contains the ground truth and experiment OT statistics.",
+    )
+    parser.add_argument(
+        "--experiment",
+        default=DEFAULT_EXPERIMENT,
+        help="Experiment column to visualize (matches the TC-ACN prediction column name).",
     )
     parser.add_argument(
         "--output",
@@ -74,12 +72,41 @@ def parse_args() -> argparse.Namespace:
 # Plot Function
 # =============================
 
-def plot_boxplot(args: argparse.Namespace) -> None:
+def extract_series(dataset: Path, experiment: str) -> "OrderedDict[str, pd.Series]":
+    if not dataset.exists():
+        raise SystemExit(f"Dataset not found: {dataset}")
+
+    df = pd.read_excel(dataset)
+
+    required_columns = [
+        GROUND_TRUTH_COLUMN,
+        f"{experiment}_ot_equivalent_count",
+        f"{experiment}_ot_equivalent_mismatch_count",
+    ]
+    missing = [col for col in required_columns if col not in df.columns]
+    if missing:
+        raise SystemExit(f"Missing required columns in {dataset}: {', '.join(missing)}")
+
+    friendly_name = FRIENDLY_EXPERIMENT_NAMES.get(experiment, experiment)
+
+    return OrderedDict(
+        [
+            ("Manual_OT_Count", df[GROUND_TRUTH_COLUMN].dropna()),
+            (f"LLM_OT_Count", df[f"{experiment}_ot_equivalent_count"].dropna()),
+            (
+                f"Manual_LLM_OT_Mismatch_Count",
+                df[f"{experiment}_ot_equivalent_mismatch_count"].dropna(),
+            ),
+        ]
+    )
+
+
+def plot_boxplot(args: argparse.Namespace, series_map: "OrderedDict[str, pd.Series]") -> None:
 
     args.output.mkdir(parents=True, exist_ok=True)
 
-    series_list = [SERIES_MAP[key].dropna() for key in ORDERED_SERIES]
-    labels = ORDERED_SERIES
+    labels = list(series_map.keys())
+    series_list = [series_map[label] for label in labels]
 
     plt.figure(figsize=(12, 6))
 
@@ -155,7 +182,8 @@ def plot_boxplot(args: argparse.Namespace) -> None:
 
 def main() -> None:
     args = parse_args()
-    plot_boxplot(args)
+    series_map = extract_series(args.dataset, args.experiment)
+    plot_boxplot(args, series_map)
 
 
 if __name__ == "__main__":

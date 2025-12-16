@@ -27,7 +27,12 @@ except ImportError:  # pragma: no cover - fallback for older SciPy builds.
 
 GROUND_TRUTH_COLUMN = "TC-CAN_GroundTruth"
 EXPERIMENT_COLUMNS = [
+    "GPT+_TC-CAN_With_File_Same_Session",
+    "GPT+_TC-CAN_Without_File_Same_Session",
+    "GPT+_TC-CAN_Without_File_Different_Session",
     "GPT+_TC-CAN_With_File_Different_Session",
+    "LLM Free ( Same session)",
+    "LLM Free ( Different session)",
 ]
 EXPECTED_VECTOR_LENGTH = 17
 MISSING_LABEL = "MISSING"
@@ -56,6 +61,12 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path("Data") / "FinalResultsRQ2.xlsx",
         help="Excel file under Data/ that stores per-row metrics.",
+    )
+    parser.add_argument(
+        "--experiments",
+        nargs="+",
+        default=list(EXPERIMENT_COLUMNS),
+        help="Experiment columns to analyze and compare to the ground truth.",
     )
     return parser.parse_args()
 
@@ -147,7 +158,9 @@ def count_ot_equivalent_entries(vector: Sequence[str]) -> int:
     return total
 
 
-def ensure_vectors(series: Sequence[object]) -> tuple[list[list[str]], int]:
+def ensure_vectors(
+    series: Sequence[object], column_name: str | None = None
+) -> tuple[list[list[str]], int]:
     """
     Convert an entire pandas Series of ACN vectors into a list of tokens.
 
@@ -155,8 +168,13 @@ def ensure_vectors(series: Sequence[object]) -> tuple[list[list[str]], int]:
     """
     vectors: list[list[str]] = []
     missing = 0
-    for value in series:
-        tokens = normalize_vector(value)
+    for row_idx, value in enumerate(series, start=1):
+        try:
+            tokens = normalize_vector(value)
+        except ValueError as exc:
+            column_hint = f" for column '{column_name}'" if column_name else ""
+            print(f"[warn] {exc} at row {row_idx}{column_hint}; substituting placeholders.")
+            tokens = []
         if not tokens:
             tokens = [MISSING_LABEL] * EXPECTED_VECTOR_LENGTH
             missing += 1
@@ -307,7 +325,7 @@ def main() -> None:
     if df.empty:
         raise SystemExit("No rows with a ground-truth vector were found.")
 
-    gt_vectors, missing_gt = ensure_vectors(df[GROUND_TRUTH_COLUMN])
+    gt_vectors, missing_gt = ensure_vectors(df[GROUND_TRUTH_COLUMN], GROUND_TRUTH_COLUMN)
     if missing_gt:
         raise SystemExit("Ground truth column contains missing vectors, cannot proceed.")
     gt_ot_equivalent_counts = [count_ot_equivalent_entries(vector) for vector in gt_vectors]
@@ -322,12 +340,12 @@ def main() -> None:
     processed_experiments: List[str] = []
     experiment_metric_columns: Dict[str, List[str]] = {}
 
-    for experiment in EXPERIMENT_COLUMNS:
+    for experiment in args.experiments:
         if experiment not in df.columns:
             print(f"[warn] Column not found, skipping: {experiment}")
             continue
         processed_experiments.append(experiment)
-        pred_vectors, missing_rows = ensure_vectors(df[experiment])
+        pred_vectors, missing_rows = ensure_vectors(df[experiment], experiment)
         row_metrics, matches_per_row = build_row_metrics(experiment, gt_vectors, pred_vectors)
         for column_name, values in row_metrics.items():
             detailed_columns[column_name] = values

@@ -18,10 +18,10 @@ import pandas as pd
 FRIENDLY_NAMES = {
     "LLM Free ( Same session)": "FreeChatGPTWithSameSession",
     "LLM Free ( Different session)": "FreeChatGPTWithDifferentSession",
-    "GPT+_TC-CAN_With_File_Same_Session": "ProChatGPTWithTaxonomyFileWithSameSession",
-    "GPT+_TC-CAN_With_File_Different_Session": "ProChatGPTWithTaxonomyFileWithDifferentSession",
-    "GPT+_TC-CAN_Without_File_Same_Session": "ProChatGPTWithoutTaxonomyFileWithSameSession",
-    "GPT+_TC-CAN_Without_File_Different_Session": "ProChatGPTWithoutTaxonomyFileWithDifferentSession",
+    "GPT+_TC-CAN_With_File_Same_Session": "ChatGPTPlusWithTaxonomyFileWithSameSession",
+    "GPT+_TC-CAN_With_File_Different_Session": "ChatGPTPlusWithTaxonomyFileWithDifferentSession",
+    "GPT+_TC-CAN_Without_File_Same_Session": "ChatGPTPlusWithoutTaxonomyFileWithSameSession",
+    "GPT+_TC-CAN_Without_File_Different_Session": "ChatGPTPlusWithoutTaxonomyFileWithDifferentSession",
 }
 
 SHORT_NAMES = {
@@ -51,7 +51,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--dataset",
         type=Path,
-        default=Path("Data") / "FinalBoxplot.xlsx",
+        default=Path("Data") / "FFFFFFinalResults.xlsx",
         help="Excel file that contains one column per experiment.",
     )
     parser.add_argument(

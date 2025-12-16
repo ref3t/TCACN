@@ -40,25 +40,56 @@ The main objectives of this work are:
 
 ---
 
+## Reproducing the Analysis and Figures
+
+The scripts in `Results/` operate directly on the latest workbook (`Data/FFFFFFinalResults.xlsx`, 52 logs). The commands below recompute the metrics and generate every figure referenced in the paper. Feel free to append `--show` (when supported) to open the Matplotlib window in addition to saving the PNG.
+
+### 1. Recompute final metrics / refresh the workbook
+```
+python Results/compute_final_results.py \
+  --dataset Data/FFFFFFinalResults.xlsx \
+  --detailed-output Data/FFFFFFinalResults.xlsx \
+  --output Results/FFFFFFinalResults_summary.xlsx
+```
+- Normalizes all TC-ACN vectors, rebuilds every `*_diff_*`, `*_hamming`, and OT-equivalent column, and writes the updated workbook plus a summary file under `Results/`.
+
+### 2. Hamming accuracy and difference boxplots (Figure 4)
+```
+python Results/Boxplot.py --dataset Data/FFFFFFinalResults.xlsx --output Results
+```
+- Reads every `*_hamming` and `*_diff_count` column, then saves `Results/boxplot_hamming.png` and `Results/boxplot_diff.png` with the means/medians annotated per configuration.
+
+### 3. OT-equivalent count distribution (Figure 5)
+```
+python Results/Mismatches.py \
+  --dataset Data/FFFFFFinalResults.xlsx \
+  --experiment "GPT+_TC-CAN_With_File_Different_Session" \
+  --output Results
+```
+- Plots the manual OT counts, the chosen experiment’s OT-equivalent counts, and their mismatch counts, recreating the OT boxplot in `Results/boxplot_ot.png`.
+
+### 4. OT-equivalent mismatch categories (Figure 6)
+```
+python RQ2CategoryPlot.py \
+  --dataset Data/FFFFFFinalResults.xlsx \
+  --experiment "GPT+_TC-CAN_With_File_Different_Session" \
+  --table-output Results/ot_mismatch_categories.xlsx \
+  --figure-output Results/ot_mismatch_categories.png
+```
+- Aggregates `<experiment>_ot_equivalent_mismatch_categories`, saves the sorted counts to Excel, and produces the bar chart showing where OT mismatches occur across the taxonomy.
+
+### 5. Generic (non-OT) mismatch categories
+```
+python Results/PlotMismatchCategories.py \
+  --dataset Data/FFFFFFinalResults.xlsx \
+  --experiment "GPT+_TC-CAN_With_File_Different_Session" \
+  --table-output Results/diff_mismatch_categories_no_ot.xlsx \
+  --figure-output Results/diff_mismatch_categories_no_ot.png \
+  --ignore-ot
+```
+- Tokenizes `<experiment>_diff_locations`, optionally excludes rows where either side equals `OT`, and charts the remaining predicate mismatches. Remove `--ignore-ot` if you want the complete (OT-inclusive) counts.
+
 ---
-
-## Future Work
-
-We plan to explore three directions:
-
-1. **Dataset Collaboration with CSIRTs**  
-   Request real-world datasets for training and fine-tuning tailored models.
-
-2. **Migration to TC–ACN v2.0**  
-   Re-run experiments with the updated taxonomy (released November 2025) using:
-   - re-annotated data, or  
-   - new datasets  
-   to evaluate adaptability and performance under the revised standard.
-
-3. **Local vs. Online LLMs**
-   Compare local models (e.g., Ollama) with online solutions (GPT, Llama 3)
-
-   Local models may be attractive for organizations unable or unwilling to pay for commercial cloud services, or those with strict privacy constraints.
 
 ---
 
