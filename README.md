@@ -40,9 +40,9 @@ The main objectives of this work are:
 
 ---
 
-## Reproducing the Analysis and Figures
+## Reproducing the Analysis
 
-The scripts in `Results/` operate directly on the latest workbook (`Data/FFFFFFinalResults.xlsx`, 52 logs). The commands below recompute the metrics and generate every figure referenced in the paper. Feel free to append `--show` (when supported) to open the Matplotlib window in addition to saving the PNG.
+The scripts in `Results/` operate directly on the latest workbook (`Data/FFFFFFinalResults.xlsx`, 52 logs). The commands below recompute the metrics and generate every figure referenced in the paper. Feel free to append `--show` (when supported) to open the Matplotlib window.
 
 ### 1. Recompute final metrics / refresh the workbook
 ```
@@ -53,13 +53,13 @@ python Results/compute_final_results.py \
 ```
 - Normalizes all TC-ACN vectors, rebuilds every `*_diff_*`, `*_hamming`, and OT-equivalent column, and writes the updated workbook plus a summary file under `Results/`.
 
-### 2. Hamming accuracy and difference boxplots (Figure 4)
+### 2. Hamming accuracy and difference boxplots
 ```
 python Results/Boxplot.py --dataset Data/FFFFFFinalResults.xlsx --output Results
 ```
 - Reads every `*_hamming` and `*_diff_count` column, then saves `Results/boxplot_hamming.png` and `Results/boxplot_diff.png` with the means/medians annotated per configuration.
 
-### 3. OT-equivalent count distribution (Figure 5)
+### 3. OT-equivalent count distribution
 ```
 python Results/Mismatches.py \
   --dataset Data/FFFFFFinalResults.xlsx \
@@ -68,7 +68,7 @@ python Results/Mismatches.py \
 ```
 - Plots the manual OT counts, the chosen experiment’s OT-equivalent counts, and their mismatch counts, recreating the OT boxplot in `Results/boxplot_ot.png`.
 
-### 4. OT-equivalent mismatch categories (Figure 6)
+### 4. OT-equivalent mismatch categories
 ```
 python RQ2CategoryPlot.py \
   --dataset Data/FFFFFFinalResults.xlsx \
@@ -92,6 +92,7 @@ python Results/PlotMismatchCategories.py \
 ---
 
 ---
+
 
 
 
